@@ -3,22 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Rathore Heritage Developers | Where Royalty Becomes Legacy</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
-    --black:#080706;
-    --deep:#100e0b;
-    --brown:#211710;
-    --gold:#c9a45c;
-    --gold2:#e8cc91;
-    --cream:#f5eddd;
-    --muted:#b9ad99;
-    --line:rgba(201,164,92,.24);
+    --black:#0b0907;
+    --deep:#120d09;
+    --brown:#24160d;
+    --brown2:#352116;
+    --gold:#c8a15a;
+    --gold2:#e2c37b;
+    --cream:#f3ead9;
+    --muted:#b8aa94;
+    --line:rgba(200,161,90,.22);
+    --white:#fffaf0;
 }
 
 *{
@@ -38,14 +47,17 @@ body{
     overflow-x:hidden;
 }
 
-::selection{
-    background:var(--gold);
-    color:#080706;
+body::-webkit-scrollbar{
+    width:8px;
 }
 
-img{
-    width:100%;
-    display:block;
+body::-webkit-scrollbar-track{
+    background:#090705;
+}
+
+body::-webkit-scrollbar-thumb{
+    background:var(--gold);
+    border-radius:10px;
 }
 
 a{
@@ -53,204 +65,237 @@ a{
     text-decoration:none;
 }
 
-button{
+img{
+    max-width:100%;
+    display:block;
+}
+
+button,
+input,
+textarea{
     font-family:inherit;
 }
 
-/* ================= PRELOADER ================= */
 
-.loader{
+/* =========================================================
+   PRELOADER
+========================================================= */
+
+#preloader{
     position:fixed;
     inset:0;
-    background:#070605;
+    background:#090705;
     z-index:99999;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     transition:1s ease;
 }
 
-.loader.hide{
-    opacity:0;
-    pointer-events:none;
-}
-
-.loader-inner{
+.loader-content{
     text-align:center;
 }
 
 .loader-mark{
-    width:85px;
-    height:85px;
+    width:70px;
+    height:70px;
     border:1px solid var(--gold);
-    border-radius:50%;
-    display:grid;
-    place-items:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     margin:auto;
-    animation:loaderSpin 3s linear infinite;
+    transform:rotate(45deg);
 }
 
 .loader-mark span{
-    font-family:"Cormorant Garamond";
-    font-size:42px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:34px;
     color:var(--gold2);
+    transform:rotate(-45deg);
 }
 
-.loader p{
-    margin-top:22px;
-    letter-spacing:5px;
-    font-size:10px;
+.loader-content p{
+    margin-top:28px;
     color:var(--muted);
+    font-size:11px;
+    letter-spacing:4px;
+    text-transform:uppercase;
 }
 
-@keyframes loaderSpin{
-    to{transform:rotate(360deg)}
-}
 
-/* ================= CURSOR ================= */
+/* =========================================================
+   CURSOR
+========================================================= */
 
 .cursor{
     width:8px;
     height:8px;
-    border-radius:50%;
     background:var(--gold2);
+    border-radius:50%;
     position:fixed;
-    z-index:9999;
     pointer-events:none;
+    z-index:99998;
     transform:translate(-50%,-50%);
     mix-blend-mode:difference;
 }
 
 .cursor-ring{
-    width:38px;
-    height:38px;
-    border:1px solid rgba(232,204,145,.7);
+    width:35px;
+    height:35px;
+    border:1px solid rgba(226,195,123,.7);
     border-radius:50%;
     position:fixed;
-    z-index:9998;
     pointer-events:none;
+    z-index:99997;
     transform:translate(-50%,-50%);
-    transition:transform .12s ease;
+    transition:transform .15s ease,width .2s ease,height .2s ease;
 }
 
-/* ================= NAVBAR ================= */
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 .navbar{
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    z-index:5000;
-    padding:24px 5%;
+    height:88px;
+    z-index:1000;
     display:flex;
     align-items:center;
     justify-content:space-between;
+    padding:0 6%;
     transition:.5s ease;
 }
 
 .navbar.scrolled{
-    padding:13px 5%;
-    background:rgba(8,7,6,.82);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(201,164,92,.12);
+    height:72px;
+    background:rgba(9,7,5,.94);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid var(--line);
 }
 
-.brand{
+.logo{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:14px;
 }
 
-.brand-logo{
-    width:48px;
-    height:48px;
+.logo-symbol{
+    width:42px;
+    height:42px;
+    border:1px solid var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    transform:rotate(45deg);
 }
 
-.brand-text strong{
-    display:block;
-    font-family:"Cormorant Garamond";
-    font-size:20px;
-    letter-spacing:2px;
-}
-
-.brand-text span{
-    font-size:7px;
-    letter-spacing:3px;
+.logo-symbol::before{
+    content:"R";
     color:var(--gold2);
+    font-family:"Cormorant Garamond",serif;
+    font-size:27px;
+    transform:rotate(-45deg);
+}
+
+.logo-text{
+    display:flex;
+    flex-direction:column;
+}
+
+.logo-text strong{
+    font-family:"Cormorant Garamond",serif;
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:1px;
+}
+
+.logo-text small{
+    color:var(--gold);
+    font-size:8px;
+    letter-spacing:3px;
+    text-transform:uppercase;
 }
 
 .nav-links{
     display:flex;
-    gap:30px;
     align-items:center;
+    gap:32px;
 }
 
 .nav-links a{
-    font-size:11px;
-    letter-spacing:1.5px;
-    color:#ddd2bd;
     position:relative;
+    font-size:11px;
+    letter-spacing:1.8px;
+    text-transform:uppercase;
+    color:#d8ccb9;
 }
 
-.nav-links a:after{
+.nav-links a::after{
     content:"";
     position:absolute;
+    left:0;
+    bottom:-8px;
     width:0;
     height:1px;
-    bottom:-7px;
-    left:0;
     background:var(--gold);
-    transition:.35s;
+    transition:.35s ease;
 }
 
-.nav-links a:hover:after{
+.nav-links a:hover::after{
     width:100%;
 }
 
 .nav-cta{
-    padding:13px 21px;
     border:1px solid var(--gold);
-    font-size:10px;
-    letter-spacing:2px;
-    color:var(--gold2);
+    padding:13px 21px;
+    color:var(--gold2)!important;
 }
 
-.menu{
+.nav-cta::after{
     display:none;
+}
+
+.menu-toggle{
+    display:none;
+    color:var(--gold);
     font-size:26px;
     cursor:pointer;
 }
 
-/* ================= HERO ================= */
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
-    height:100vh;
-    min-height:720px;
+    min-height:100vh;
     position:relative;
     overflow:hidden;
     display:flex;
     align-items:center;
-    justify-content:center;
-    background:#080706;
 }
 
-.hero-bg{
+.hero-image{
     position:absolute;
-    inset:-12%;
-    background:
-    linear-gradient(90deg,rgba(5,4,3,.85),rgba(5,4,3,.25),rgba(5,4,3,.72)),
-    url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2200&q=90");
+    inset:-8%;
+    background-image:url("https://i2.pickpik.com/photos/316/380/911/architecture-chomu-palace-rajasthan-india-a3dcfca02d32fd37584e6f201cf0310b.jpg");
     background-size:cover;
     background-position:center;
-    animation:cinematicZoom 18s ease-in-out infinite alternate;
+    animation:heroZoom 18s ease-in-out infinite alternate;
+    transform-origin:center;
 }
 
-@keyframes cinematicZoom{
+@keyframes heroZoom{
     from{
-        transform:scale(1.02);
+        transform:scale(1);
     }
     to{
-        transform:scale(1.16);
+        transform:scale(1.13);
     }
 }
 
@@ -258,35 +303,30 @@ button{
     position:absolute;
     inset:0;
     background:
-    linear-gradient(to bottom,rgba(5,4,3,.45),transparent 35%,rgba(5,4,3,.9)),
-    radial-gradient(circle at center,transparent 20%,rgba(0,0,0,.58));
-}
-
-.hero-vignette{
-    position:absolute;
-    inset:0;
-    box-shadow:inset 0 0 180px rgba(0,0,0,.9);
+        linear-gradient(90deg,rgba(8,5,3,.9) 0%,rgba(8,5,3,.63) 42%,rgba(8,5,3,.28) 100%),
+        linear-gradient(0deg,rgba(8,5,3,.75),transparent 45%);
 }
 
 .hero-content{
     position:relative;
-    z-index:3;
-    width:min(1150px,90%);
-    padding-top:80px;
+    z-index:2;
+    width:100%;
+    padding:150px 8% 100px;
+    max-width:1100px;
 }
 
 .eyebrow{
     display:flex;
     align-items:center;
-    gap:13px;
+    gap:14px;
     color:var(--gold2);
     font-size:10px;
-    letter-spacing:5px;
+    letter-spacing:4px;
     text-transform:uppercase;
-    margin-bottom:24px;
+    margin-bottom:22px;
 }
 
-.eyebrow:before{
+.eyebrow::before{
     content:"";
     width:45px;
     height:1px;
@@ -296,955 +336,1017 @@ button{
 .hero h1{
     font-family:"Cormorant Garamond",serif;
     font-size:clamp(65px,9vw,135px);
+    line-height:.82;
     font-weight:500;
-    line-height:.77;
-    letter-spacing:-4px;
-    max-width:900px;
+    max-width:850px;
+    letter-spacing:-3px;
 }
 
 .hero h1 span{
-    display:block;
     color:var(--gold2);
     font-style:italic;
 }
 
 .hero-sub{
-    margin-top:35px;
-    max-width:520px;
-    font-size:15px;
+    max-width:570px;
+    color:#d7cabb;
     line-height:1.8;
-    color:#ddd1bd;
+    font-size:15px;
+    margin:34px 0;
 }
 
 .hero-buttons{
-    margin-top:38px;
     display:flex;
-    gap:15px;
+    gap:16px;
+    flex-wrap:wrap;
 }
 
 .btn{
-    position:relative;
-    overflow:hidden;
-    padding:16px 26px;
-    border:1px solid var(--gold);
     display:inline-flex;
     align-items:center;
     justify-content:center;
+    min-width:175px;
+    padding:16px 26px;
+    border:1px solid var(--gold);
     font-size:10px;
-    letter-spacing:2px;
     text-transform:uppercase;
-    transition:.4s;
+    letter-spacing:2px;
+    transition:.35s ease;
+    position:relative;
+    overflow:hidden;
 }
 
-.btn.primary{
+.btn-primary{
     background:var(--gold);
-    color:#0a0806;
+    color:#130d08;
 }
 
-.btn.secondary{
+.btn-secondary{
     color:var(--gold2);
-    background:rgba(0,0,0,.15);
 }
 
 .btn:hover{
-    box-shadow:0 0 35px rgba(201,164,92,.2);
+    transform:translateY(-4px);
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
 }
 
 .hero-bottom{
     position:absolute;
-    bottom:32px;
-    left:5%;
-    right:5%;
-    z-index:3;
+    bottom:30px;
+    left:8%;
+    right:8%;
+    z-index:2;
     display:flex;
     justify-content:space-between;
     align-items:end;
 }
 
-.scroll{
+.scroll-text{
     font-size:9px;
     letter-spacing:3px;
-    color:#c8bca8;
-    writing-mode:vertical-rl;
+    text-transform:uppercase;
+    color:var(--muted);
 }
 
-.hero-location{
-    text-align:right;
-    font-size:10px;
-    letter-spacing:2px;
-    color:#c9bea9;
+.scroll-line{
+    width:80px;
+    height:1px;
+    background:var(--gold);
+    margin-top:10px;
 }
 
-.hero-location strong{
-    display:block;
-    font-family:"Cormorant Garamond";
-    font-size:20px;
-    color:var(--gold2);
-    letter-spacing:1px;
-}
 
-/* ================= SECTION COMMON ================= */
+/* =========================================================
+   COMMON SECTIONS
+========================================================= */
 
 section{
     position:relative;
 }
 
 .section{
-    padding:125px 7%;
+    padding:130px 8%;
 }
 
 .section-head{
-    max-width:700px;
+    max-width:720px;
     margin-bottom:70px;
 }
 
-.kicker{
+.section-label{
     color:var(--gold);
+    font-size:10px;
     letter-spacing:4px;
     text-transform:uppercase;
-    font-size:9px;
     margin-bottom:18px;
 }
 
 .section-title{
-    font-family:"Cormorant Garamond";
-    font-weight:500;
-    font-size:clamp(46px,6vw,82px);
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(48px,6vw,85px);
     line-height:.95;
+    font-weight:500;
 }
 
-.section-title em{
+.section-title span{
     color:var(--gold2);
-    font-weight:400;
+    font-style:italic;
 }
 
 .section-description{
     margin-top:25px;
+    max-width:620px;
     color:var(--muted);
     line-height:1.9;
-    max-width:570px;
+    font-size:14px;
 }
 
-/* ================= ABOUT ================= */
+
+/* =========================================================
+   ABOUT
+========================================================= */
 
 .about{
     background:
-    radial-gradient(circle at 80% 20%,rgba(201,164,92,.08),transparent 25%),
-    #0c0a08;
+        radial-gradient(circle at 80% 20%,rgba(157,111,52,.12),transparent 30%),
+        var(--black);
 }
 
 .about-grid{
     display:grid;
-    grid-template-columns:1fr 1.1fr;
-    gap:90px;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
     align-items:center;
 }
 
 .about-image{
     position:relative;
-    height:650px;
+    min-height:620px;
     overflow:hidden;
 }
 
 .about-image img{
-    height:100%;
+    width:100%;
+    height:620px;
     object-fit:cover;
-    transition:1.2s;
+    filter:saturate(.8) contrast(1.05);
+    transition:1s ease;
 }
 
 .about-image:hover img{
-    transform:scale(1.06);
+    transform:scale(1.05);
 }
 
-.about-image:after{
-    content:"";
+.image-frame{
     position:absolute;
-    inset:18px;
-    border:1px solid rgba(232,204,145,.4);
+    inset:20px;
+    border:1px solid rgba(226,195,123,.35);
     pointer-events:none;
 }
 
-.about-number{
+.image-caption{
     position:absolute;
-    bottom:-25px;
-    right:-20px;
-    font-family:"Cormorant Garamond";
-    font-size:150px;
-    color:rgba(201,164,92,.07);
+    bottom:25px;
+    left:25px;
+    right:25px;
+    background:rgba(9,7,5,.78);
+    backdrop-filter:blur(10px);
+    padding:20px;
+    border-left:2px solid var(--gold);
+}
+
+.image-caption span{
+    display:block;
+    color:var(--gold2);
+    font-family:"Cormorant Garamond",serif;
+    font-size:25px;
+}
+
+.image-caption small{
+    color:var(--muted);
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
 .about-copy p{
-    color:#bdb09d;
-    line-height:1.95;
-    margin-top:25px;
+    color:var(--muted);
+    line-height:2;
+    font-size:14px;
+    margin-bottom:25px;
 }
 
-.heritage-sign{
-    margin-top:38px;
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
-
-.sign-line{
-    width:70px;
-    height:1px;
-    background:var(--gold);
-}
-
-.sign-text{
-    font-family:"Cormorant Garamond";
-    font-size:21px;
+.about-signature{
+    font-family:"Cormorant Garamond",serif;
     color:var(--gold2);
+    font-size:28px;
+    font-style:italic;
 }
 
-/* ================= ROYAL STATEMENT ================= */
+
+/* =========================================================
+   ROYAL STATEMENT
+========================================================= */
 
 .statement{
-    min-height:570px;
+    min-height:600px;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
     overflow:hidden;
-    background:
-    linear-gradient(rgba(8,7,6,.76),rgba(8,7,6,.9)),
-    url("https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=2200&q=90") center/cover fixed;
 }
 
-.statement:before{
-    content:"";
+.statement-bg{
     position:absolute;
-    inset:25px;
-    border:1px solid rgba(201,164,92,.2);
+    inset:0;
+    background-image:url("https://jaisalmertourism.co.in/images/places-to-visit/headers/jaisalmer-fort-palace-museum-and-heritage-centre-header-jaisalmer-tourism.jpg.jpg");
+    background-size:cover;
+    background-position:center;
+    filter:saturate(.65);
+    transform:scale(1.05);
 }
 
-.statement-inner{
-    max-width:950px;
+.statement-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(10,6,3,.72);
+}
+
+.statement-content{
     position:relative;
+    z-index:2;
+    max-width:1000px;
+    padding:60px 20px;
 }
 
-.statement h2{
-    font-family:"Cormorant Garamond";
-    font-weight:400;
-    font-size:clamp(48px,7vw,95px);
-    line-height:.95;
-}
-
-.statement h2 em{
+.statement-content .ornament{
     color:var(--gold2);
+    font-size:35px;
+    margin-bottom:20px;
 }
 
-.statement p{
+.statement-content h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(50px,7vw,100px);
+    line-height:.9;
+    font-weight:500;
+}
+
+.statement-content h2 span{
+    color:var(--gold2);
+    font-style:italic;
+}
+
+.statement-content p{
+    max-width:650px;
     margin:30px auto 0;
-    max-width:620px;
-    color:#c4b8a4;
+    color:#d4c6b3;
     line-height:1.8;
 }
 
-/* ================= SERVICES ================= */
+
+/* =========================================================
+   SERVICES
+========================================================= */
 
 .services{
-    background:#100d0a;
+    background:#100b07;
 }
 
 .services-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    border-top:1px solid var(--line);
-    border-left:1px solid var(--line);
+    gap:1px;
+    background:var(--line);
 }
 
-.service{
-    min-height:350px;
-    padding:42px 32px;
-    border-right:1px solid var(--line);
-    border-bottom:1px solid var(--line);
+.service-card{
+    min-height:390px;
+    background:#100b07;
+    padding:40px 30px;
     position:relative;
     overflow:hidden;
-    transition:.5s;
+    transition:.5s ease;
 }
 
-.service:before{
+.service-card::before{
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(135deg,rgba(201,164,92,.11),transparent 50%);
-    transform:translateY(100%);
-    transition:.6s;
+    background-image:url("https://www.indiaclassicjourneys.com/wp-content/uploads/2023/12/Raas-Haveli-Jodhpur-Rajasthan.jpg");
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    transition:.5s ease;
 }
 
-.service:hover:before{
-    transform:translateY(0);
+.service-card:hover::before{
+    opacity:.18;
+    transform:scale(1.08);
 }
 
-.service:hover{
-    background:#16110d;
+.service-content{
+    position:relative;
+    z-index:2;
 }
 
-.service-no{
-    font-family:"Cormorant Garamond";
-    color:var(--gold);
+.service-number{
+    font-family:"Cormorant Garamond",serif;
     font-size:20px;
+    color:var(--gold);
 }
 
 .service-icon{
-    font-size:32px;
+    margin:50px 0 25px;
+    font-size:35px;
     color:var(--gold2);
-    margin:55px 0 28px;
 }
 
-.service h3{
-    font-family:"Cormorant Garamond";
-    font-size:29px;
+.service-card h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:32px;
     font-weight:500;
-    position:relative;
 }
 
-.service p{
-    color:#968b7a;
-    line-height:1.7;
+.service-card p{
     margin-top:15px;
-    font-size:12px;
-    position:relative;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.8;
 }
 
-/* ================= PROJECTS ================= */
 
-.projects{
-    background:#080706;
-}
+/* =========================================================
+   SIGNATURE PROJECTS
+========================================================= */
 
 .projects-grid{
     display:grid;
-    grid-template-columns:1.3fr .7fr;
-    gap:20px;
+    grid-template-columns:1.4fr 1fr;
+    gap:25px;
 }
 
 .project{
-    height:570px;
     position:relative;
     overflow:hidden;
+    min-height:560px;
 }
 
-.project.small{
-    height:275px;
+.project:nth-child(2){
+    min-height:270px;
+}
+
+.project:nth-child(3){
+    min-height:270px;
 }
 
 .project img{
+    width:100%;
     height:100%;
+    position:absolute;
+    inset:0;
     object-fit:cover;
-    transition:1s cubic-bezier(.2,.7,.2,1);
+    transition:1s ease;
 }
 
 .project:hover img{
     transform:scale(1.08);
 }
 
-.project-overlay{
+.project::after{
+    content:"";
     position:absolute;
     inset:0;
-    display:flex;
-    align-items:end;
-    padding:35px;
-    background:linear-gradient(transparent 40%,rgba(0,0,0,.9));
+    background:linear-gradient(0deg,rgba(5,3,2,.85),transparent 60%);
+}
+
+.project-info{
+    position:absolute;
+    bottom:30px;
+    left:30px;
+    z-index:2;
 }
 
 .project-info small{
-    color:var(--gold);
+    color:var(--gold2);
+    font-size:9px;
     letter-spacing:3px;
-    font-size:8px;
+    text-transform:uppercase;
 }
 
 .project-info h3{
-    font-family:"Cormorant Garamond";
-    font-size:39px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:38px;
     font-weight:500;
     margin-top:7px;
 }
 
-.project-column{
-    display:grid;
-    gap:20px;
-}
 
-/* ================= PHILOSOPHY ================= */
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
 
 .philosophy{
-    background:#0e0b09;
+    background:#0c0805;
 }
 
 .philosophy-grid{
     display:grid;
-    grid-template-columns:.8fr 1.2fr;
+    grid-template-columns:1fr 1fr;
     gap:90px;
     align-items:center;
 }
 
-.philosophy-visual{
-    height:620px;
+.philosophy-image{
     position:relative;
-    background:
-    url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=90") center/cover;
+    height:650px;
+    overflow:hidden;
 }
 
-.philosophy-visual:before{
-    content:"";
-    position:absolute;
-    inset:20px;
-    border:1px solid var(--gold);
+.philosophy-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:1s ease;
 }
 
-.philosophy-copy h2{
-    font-family:"Cormorant Garamond";
-    font-size:clamp(45px,5vw,75px);
-    font-weight:400;
-    line-height:.95;
+.philosophy-image:hover img{
+    transform:scale(1.06);
 }
 
-.philosophy-copy h2 span{
-    color:var(--gold2);
+.philosophy-list{
+    margin-top:40px;
 }
 
-.principles{
-    margin-top:45px;
+.philosophy-item{
+    padding:25px 0;
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns:50px 1fr;
+    gap:20px;
 }
 
-.principle{
-    display:flex;
-    gap:25px;
-    padding:24px 0;
-    border-bottom:1px solid rgba(201,164,92,.18);
-}
-
-.principle b{
-    font-family:"Cormorant Garamond";
+.philosophy-item span{
     color:var(--gold);
-    font-size:20px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:24px;
 }
 
-.principle h4{
-    font-family:"Cormorant Garamond";
-    font-size:24px;
+.philosophy-item h4{
+    font-family:"Cormorant Garamond",serif;
+    font-size:28px;
     font-weight:500;
 }
 
-.principle p{
-    color:#918675;
-    font-size:12px;
-    line-height:1.6;
-    margin-top:5px;
+.philosophy-item p{
+    margin-top:7px;
+    color:var(--muted);
+    line-height:1.7;
+    font-size:13px;
 }
 
-/* ================= STATS ================= */
+
+/* =========================================================
+   STATS
+========================================================= */
 
 .stats{
-    padding:90px 7%;
-    background:var(--brown);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    text-align:center;
+    background:#0d0906;
 }
 
 .stat{
-    padding:20px;
-    border-right:1px solid rgba(201,164,92,.2);
+    text-align:center;
+    padding:65px 20px;
+    border-right:1px solid var(--line);
 }
 
 .stat:last-child{
-    border:0;
+    border-right:0;
 }
 
-.stat-number{
-    font-family:"Cormorant Garamond";
-    font-size:65px;
+.stat strong{
+    display:block;
+    font-family:"Cormorant Garamond",serif;
     color:var(--gold2);
+    font-size:62px;
+    font-weight:500;
 }
 
-.stat-label{
-    font-size:9px;
-    letter-spacing:3px;
-    color:#a99c88;
+.stat span{
+    color:var(--muted);
     text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:9px;
 }
 
-/* ================= GALLERY ================= */
+
+/* =========================================================
+   GALLERY
+========================================================= */
 
 .gallery{
-    background:#080706;
+    padding-bottom:130px;
 }
 
 .gallery-grid{
-    columns:3 280px;
-    column-gap:18px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
 }
 
 .gallery-item{
-    break-inside:avoid;
-    margin-bottom:18px;
+    height:340px;
     overflow:hidden;
     position:relative;
 }
 
+.gallery-item:nth-child(2){
+    height:420px;
+}
+
+.gallery-item:nth-child(4){
+    height:420px;
+}
+
+.gallery-item:nth-child(5){
+    height:340px;
+}
+
 .gallery-item img{
-    transition:1s;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:1s ease;
 }
 
 .gallery-item:hover img{
-    transform:scale(1.05);
+    transform:scale(1.08);
 }
 
-/* ================= PROCESS ================= */
+.gallery-item::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(0deg,rgba(0,0,0,.45),transparent);
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
 
 .process{
-    background:#0d0a08;
+    background:#120c08;
 }
 
 .process-grid{
     display:grid;
-    grid-template-columns:repeat(5,1fr);
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
+    grid-template-columns:repeat(4,1fr);
+    gap:35px;
 }
 
 .process-item{
-    padding:40px 25px;
-    min-height:230px;
-    border-right:1px solid var(--line);
-}
-
-.process-item:last-child{
-    border:0;
-}
-
-.process-number{
-    font-family:"Cormorant Garamond";
-    font-size:20px;
-    color:var(--gold);
-}
-
-.process-item h3{
-    font-family:"Cormorant Garamond";
-    font-size:28px;
-    margin-top:45px;
-}
-
-.process-item p{
-    color:#827766;
-    font-size:11px;
-    line-height:1.7;
-    margin-top:10px;
-}
-
-/* ================= TESTIMONIAL ================= */
-
-.testimonial{
-    min-height:530px;
-    display:grid;
-    place-items:center;
-    text-align:center;
-    padding:100px 7%;
-    background:
-    linear-gradient(rgba(10,8,6,.82),rgba(10,8,6,.92)),
-    url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=90") center/cover fixed;
-}
-
-.quote{
-    font-family:"Cormorant Garamond";
-    font-size:clamp(40px,5vw,70px);
-    max-width:950px;
-    line-height:1;
-}
-
-.quote-mark{
-    font-family:serif;
-    color:var(--gold);
-    font-size:80px;
-    line-height:.5;
-}
-
-.testimonial-name{
-    margin-top:35px;
-    font-size:10px;
-    letter-spacing:3px;
-    color:var(--gold2);
-}
-
-/* ================= CONTACT ================= */
-
-.contact{
-    background:
-    radial-gradient(circle at 80% 50%,rgba(201,164,92,.08),transparent 30%),
-    #0a0806;
-}
-
-.contact-grid{
-    display:grid;
-    grid-template-columns:.85fr 1.15fr;
-    gap:100px;
-    align-items:start;
-}
-
-.contact-copy h2{
-    font-family:"Cormorant Garamond";
-    font-size:clamp(50px,6vw,82px);
-    font-weight:400;
-    line-height:.9;
-}
-
-.contact-copy h2 span{
-    color:var(--gold2);
-    font-style:italic;
-}
-
-.contact-copy > p{
-    color:#988c7b;
-    line-height:1.8;
-    margin-top:25px;
-    max-width:450px;
-}
-
-.contact-details{
-    margin-top:40px;
-}
-
-.contact-detail{
-    display:flex;
-    gap:15px;
-    padding:17px 0;
-    border-bottom:1px solid rgba(201,164,92,.15);
-}
-
-.contact-detail-icon{
-    color:var(--gold);
-}
-
-.contact-detail small{
-    display:block;
-    font-size:8px;
-    letter-spacing:2px;
-    color:#746a5d;
-    text-transform:uppercase;
-}
-
-.contact-detail a,
-.contact-detail span{
-    display:block;
-    margin-top:4px;
-    font-family:"Cormorant Garamond";
-    font-size:19px;
-    color:#d8cbb6;
-}
-
-.enquiry{
-    background:#120e0b;
-    padding:45px;
-    border:1px solid rgba(201,164,92,.2);
     position:relative;
 }
 
-.enquiry:before{
+.process-item::before{
     content:"";
     position:absolute;
-    inset:9px;
-    border:1px solid rgba(201,164,92,.08);
-    pointer-events:none;
+    top:25px;
+    left:60px;
+    right:-35px;
+    height:1px;
+    background:var(--line);
 }
 
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+.process-item:last-child::before{
+    display:none;
 }
 
-.field{
+.process-number{
+    width:52px;
+    height:52px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gold2);
+    font-family:"Cormorant Garamond",serif;
+    font-size:22px;
+    background:#120c08;
     position:relative;
     z-index:2;
 }
 
-.field.full{
-    grid-column:1/-1;
+.process-item h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:29px;
+    margin-top:28px;
+    font-weight:500;
 }
 
-.field label{
+.process-item p{
+    margin-top:12px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   TESTIMONIAL
+========================================================= */
+
+.testimonial{
+    text-align:center;
+    padding:150px 8%;
+    background:#0a0705;
+}
+
+.quote-mark{
+    color:var(--gold);
+    font-family:"Cormorant Garamond",serif;
+    font-size:80px;
+    line-height:.5;
+}
+
+.quote{
+    max-width:900px;
+    margin:35px auto;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(32px,4vw,58px);
+    line-height:1.15;
+}
+
+.quote-author{
+    color:var(--gold2);
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+    background:
+        radial-gradient(circle at 10% 20%,rgba(190,143,65,.1),transparent 30%),
+        #100b07;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:90px;
+    align-items:start;
+}
+
+.contact-details{
+    margin-top:50px;
+}
+
+.contact-row{
+    display:flex;
+    gap:18px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.contact-row .icon{
+    color:var(--gold2);
+    font-size:20px;
+    width:25px;
+}
+
+.contact-row span{
     display:block;
-    font-size:8px;
+    color:var(--muted);
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:6px;
+}
+
+.contact-row a,
+.contact-row p{
+    font-family:"Cormorant Garamond",serif;
+    font-size:22px;
+    color:var(--cream);
+}
+
+.contact-form{
+    border:1px solid var(--line);
+    padding:45px;
+    background:rgba(255,255,255,.015);
+}
+
+.form-title{
+    font-family:"Cormorant Garamond",serif;
+    font-size:38px;
+    margin-bottom:30px;
+}
+
+.form-group{
+    margin-bottom:22px;
+}
+
+.form-group label{
+    display:block;
+    font-size:9px;
     letter-spacing:2px;
     text-transform:uppercase;
-    color:#938572;
+    color:var(--gold);
     margin-bottom:9px;
 }
 
-.field input,
-.field select,
-.field textarea{
+.form-group input,
+.form-group textarea{
     width:100%;
     background:transparent;
-    border:0;
-    border-bottom:1px solid rgba(201,164,92,.25);
+    border:none;
+    border-bottom:1px solid rgba(200,161,90,.28);
+    color:white;
     padding:13px 0;
     outline:none;
-    color:#eee4d3;
-    font-family:"DM Sans";
-    font-size:12px;
-    transition:.3s;
+    resize:none;
 }
 
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-    border-color:var(--gold);
+.form-group input:focus,
+.form-group textarea:focus{
+    border-bottom-color:var(--gold);
 }
 
-.field select option{
-    background:#120e0b;
-}
-
-.field textarea{
+.form-group textarea{
     min-height:110px;
-    resize:vertical;
 }
 
-.submit{
-    margin-top:30px;
+.submit-btn{
     width:100%;
     border:1px solid var(--gold);
     background:var(--gold);
-    color:#0b0805;
     padding:17px;
+    color:#100b07;
+    text-transform:uppercase;
+    letter-spacing:2px;
     font-size:10px;
-    letter-spacing:3px;
     cursor:pointer;
-    transition:.4s;
+    transition:.3s;
 }
 
-.submit:hover{
+.submit-btn:hover{
     background:var(--gold2);
-    box-shadow:0 0 35px rgba(201,164,92,.2);
+    transform:translateY(-3px);
 }
 
-/* ================= CTA ================= */
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
 
 .final-cta{
-    padding:140px 7%;
+    min-height:600px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
-    background:
-    linear-gradient(rgba(8,7,6,.7),rgba(8,7,6,.9)),
-    url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=90") center/cover fixed;
+    overflow:hidden;
 }
 
-.final-cta h2{
-    font-family:"Cormorant Garamond";
-    font-size:clamp(55px,8vw,110px);
-    font-weight:400;
-    line-height:.85;
+.final-bg{
+    position:absolute;
+    inset:0;
+    background-image:url("https://www.indiaviajes.com/images/packages/gira-en-ocio.jpg");
+    background-size:cover;
+    background-position:center;
+    transform:scale(1.08);
 }
 
-.final-cta h2 span{
+.final-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(8,5,3,.72);
+}
+
+.final-content{
+    position:relative;
+    z-index:2;
+    max-width:850px;
+}
+
+.final-content h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(55px,7vw,100px);
+    line-height:.9;
+    font-weight:500;
+}
+
+.final-content h2 span{
     color:var(--gold2);
     font-style:italic;
 }
 
-.final-cta p{
-    margin:25px auto 35px;
-    color:#afa18d;
-    max-width:500px;
+.final-content p{
+    color:#d1c4b2;
+    margin:28px auto;
+    max-width:600px;
+    line-height:1.8;
 }
 
-/* ================= FOOTER ================= */
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
-    background:#060504;
-    padding:70px 7% 30px;
-    border-top:1px solid rgba(201,164,92,.15);
+    padding:65px 8% 25px;
+    background:#080604;
+    border-top:1px solid var(--line);
 }
 
 .footer-top{
     display:grid;
-    grid-template-columns:1.4fr 1fr 1fr;
+    grid-template-columns:1.5fr 1fr 1fr;
     gap:60px;
     padding-bottom:55px;
 }
 
-.footer-brand h2{
-    font-family:"Cormorant Garamond";
-    font-size:34px;
+.footer-brand h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:36px;
     font-weight:500;
 }
 
 .footer-brand p{
-    color:#756b5d;
-    font-size:11px;
-    line-height:1.8;
-    max-width:330px;
+    max-width:350px;
+    color:var(--muted);
     margin-top:15px;
+    line-height:1.8;
+    font-size:12px;
 }
 
-.footer-col h4{
+.footer-column h4{
+    color:var(--gold);
     font-size:9px;
     letter-spacing:3px;
-    color:var(--gold);
+    text-transform:uppercase;
     margin-bottom:20px;
 }
 
-.footer-col a{
+.footer-column a{
     display:block;
-    color:#8d8170;
-    font-size:11px;
-    margin:11px 0;
+    color:var(--muted);
+    font-size:12px;
+    margin-bottom:12px;
     transition:.3s;
 }
 
-.footer-col a:hover{
+.footer-column a:hover{
     color:var(--gold2);
-    transform:translateX(5px);
+    transform:translateX(4px);
 }
 
 .socials{
     display:flex;
     gap:10px;
+    margin-top:20px;
 }
 
-.social{
+.socials a{
     width:38px;
     height:38px;
-    border:1px solid rgba(201,164,92,.25);
-    display:grid;
-    place-items:center;
-    transition:.4s;
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gold2);
+    transition:.3s;
 }
 
-.social:hover{
+.socials a:hover{
     background:var(--gold);
-    color:#080706;
-    border-color:var(--gold);
+    color:#080604;
     transform:translateY(-4px);
 }
 
 .footer-bottom{
-    border-top:1px solid rgba(201,164,92,.12);
-    padding-top:25px;
+    border-top:1px solid var(--line);
+    padding-top:20px;
     display:flex;
     justify-content:space-between;
-    color:#5e564b;
+    color:#776b5b;
     font-size:9px;
+    letter-spacing:1px;
 }
 
 .footer-bottom strong{
-    color:#9d8c72;
-    font-weight:400;
+    color:var(--gold);
 }
 
-/* ================= FLOATING ================= */
 
-.floating{
+/* =========================================================
+   FLOATING BUTTONS
+========================================================= */
+
+.floating-buttons{
     position:fixed;
     right:22px;
-    bottom:22px;
-    z-index:4000;
+    bottom:25px;
+    z-index:9990;
     display:flex;
     flex-direction:column;
     gap:10px;
 }
 
 .float-btn{
-    width:52px;
-    height:52px;
+    width:55px;
+    height:55px;
     border-radius:50%;
-    display:grid;
-    place-items:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     color:white;
-    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    font-size:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
     transition:.3s;
 }
 
 .float-btn:hover{
-    transform:scale(1.1);
+    transform:scale(1.12) translateY(-4px);
 }
 
-.whatsapp{
-    background:#159447;
+.float-call{
+    background:#1d1a16;
+    border:1px solid var(--gold);
 }
 
-.call{
-    background:#b28b42;
+.float-wa{
+    background:#178b55;
 }
 
-.float-btn svg{
-    width:23px;
-    height:23px;
-}
 
-/* ================= REVEAL ================= */
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
 .reveal{
     opacity:0;
     transform:translateY(60px);
-    transition:opacity 1s cubic-bezier(.2,.7,.2,1),
-               transform 1s cubic-bezier(.2,.7,.2,1);
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal.left{
+    transform:translateX(-70px);
+}
+
+.reveal.right{
+    transform:translateX(70px);
 }
 
 .reveal.active{
     opacity:1;
-    transform:translateY(0);
+    transform:translate(0);
 }
 
-.reveal-left{
-    opacity:0;
-    transform:translateX(-70px);
-    transition:1s cubic-bezier(.2,.7,.2,1);
-}
 
-.reveal-left.active{
-    opacity:1;
-    transform:translateX(0);
-}
-
-.reveal-right{
-    opacity:0;
-    transform:translateX(70px);
-    transition:1s cubic-bezier(.2,.7,.2,1);
-}
-
-.reveal-right.active{
-    opacity:1;
-    transform:translateX(0);
-}
-
-/* ================= MOBILE ================= */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media(max-width:1000px){
 
     .nav-links{
         position:fixed;
-        top:0;
-        right:-100%;
-        width:80%;
-        height:100vh;
-        background:#0c0a08;
+        top:72px;
+        left:0;
+        width:100%;
+        background:rgba(8,6,4,.98);
+        display:none;
         flex-direction:column;
-        justify-content:center;
-        transition:.5s;
-        border-left:1px solid var(--line);
+        padding:35px;
+        border-bottom:1px solid var(--line);
     }
 
-    .nav-links.open{
-        right:0;
+    .nav-links.active{
+        display:flex;
     }
 
-    .nav-links a{
-        font-size:14px;
+    .menu-toggle{
+        display:block;
     }
 
     .nav-cta{
-        display:none;
-    }
-
-    .menu{
-        display:block;
-        position:relative;
-        z-index:6000;
-        color:var(--gold2);
+        width:100%;
+        text-align:center;
     }
 
     .about-grid,
@@ -1258,6 +1360,25 @@ footer{
         grid-template-columns:1fr 1fr;
     }
 
+    .projects-grid{
+        grid-template-columns:1fr;
+    }
+
+    .project,
+    .project:nth-child(2),
+    .project:nth-child(3){
+        min-height:450px;
+    }
+
+    .process-grid{
+        grid-template-columns:1fr 1fr;
+        gap:50px;
+    }
+
+    .process-item::before{
+        display:none;
+    }
+
     .stats{
         grid-template-columns:1fr 1fr;
     }
@@ -1266,39 +1387,33 @@ footer{
         border-right:0;
     }
 
-    .stat{
-        border-bottom:1px solid rgba(201,164,92,.2);
-    }
-
-    .process-grid{
+    .gallery-grid{
         grid-template-columns:1fr 1fr;
-    }
-
-    .process-item:nth-child(2){
-        border-right:0;
     }
 
     .footer-top{
         grid-template-columns:1fr 1fr;
-    }
-
-    .footer-brand{
-        grid-column:1/-1;
     }
 }
 
 @media(max-width:650px){
 
     .navbar{
-        padding:17px 5%;
+        height:72px;
+        padding:0 5%;
     }
 
-    .brand-text strong{
-        font-size:16px;
+    .logo-text strong{
+        font-size:18px;
     }
 
-    .hero{
-        min-height:680px;
+    .logo-symbol{
+        width:36px;
+        height:36px;
+    }
+
+    .hero-content{
+        padding:140px 7% 100px;
     }
 
     .hero h1{
@@ -1307,191 +1422,186 @@ footer{
     }
 
     .hero-sub{
-        font-size:12px;
-    }
-
-    .hero-buttons{
-        flex-direction:column;
-        width:210px;
+        font-size:13px;
     }
 
     .section{
-        padding:90px 6%;
+        padding:90px 7%;
     }
 
-    .about-image,
-    .philosophy-visual{
-        height:470px;
-    }
-
-    .services-grid{
+    .services-grid,
+    .process-grid,
+    .stats,
+    .gallery-grid{
         grid-template-columns:1fr;
     }
 
-    .project{
-        height:400px;
-    }
-
-    .project.small{
-        height:300px;
-    }
-
-    .projects-grid{
-        grid-template-columns:1fr;
-    }
-
-    .stats{
-        grid-template-columns:1fr 1fr;
-        padding:60px 4%;
-    }
-
-    .stat-number{
-        font-size:48px;
-    }
-
-    .process-grid{
-        grid-template-columns:1fr;
-    }
-
-    .process-item{
+    .stat{
         border-right:0;
         border-bottom:1px solid var(--line);
     }
 
-    .form-grid{
-        grid-template-columns:1fr;
+    .gallery-item,
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(4),
+    .gallery-item:nth-child(5){
+        height:330px;
     }
 
-    .field.full{
-        grid-column:auto;
+    .about-image,
+    .about-image img{
+        min-height:450px;
+        height:450px;
     }
 
-    .enquiry{
-        padding:30px 22px;
+    .philosophy-image{
+        height:450px;
+    }
+
+    .contact-form{
+        padding:28px 22px;
     }
 
     .footer-top{
         grid-template-columns:1fr;
-    }
-
-    .footer-brand{
-        grid-column:auto;
+        gap:40px;
     }
 
     .footer-bottom{
         flex-direction:column;
-        gap:12px;
+        gap:10px;
     }
 
     .cursor,
     .cursor-ring{
         display:none;
     }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- PRELOADER -->
-<div class="loader">
-    <div class="loader-inner">
+
+<!-- =========================================================
+     PRELOADER
+========================================================= -->
+
+<div id="preloader">
+    <div class="loader-content">
         <div class="loader-mark">
             <span>R</span>
         </div>
-        <p>RATHORE HERITAGE DEVELOPERS</p>
+        <p>Rathore Heritage Developers</p>
     </div>
 </div>
 
-<!-- CURSOR -->
+
+<!-- =========================================================
+     CURSOR
+========================================================= -->
+
 <div class="cursor"></div>
 <div class="cursor-ring"></div>
 
-<!-- NAVBAR -->
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
 <header class="navbar">
 
-    <a href="#home" class="brand">
+    <a href="#home" class="logo">
 
-        <svg class="brand-logo" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="47" fill="none" stroke="#c9a45c"/>
-            <path d="M20 70 Q50 15 80 70" fill="none" stroke="#c9a45c" stroke-width="2"/>
-            <path d="M28 70 L28 47 L38 37 L50 45 L62 37 L72 47 L72 70"
-                  fill="none" stroke="#e8cc91" stroke-width="2"/>
-            <text x="50" y="64" text-anchor="middle"
-                  fill="#e8cc91"
-                  font-family="serif"
-                  font-size="24"
-                  font-weight="bold">R</text>
-        </svg>
+        <div class="logo-symbol"></div>
 
-        <div class="brand-text">
-            <strong>RATHORE</strong>
-            <span>HERITAGE DEVELOPERS</span>
+        <div class="logo-text">
+            <strong>Rathore Heritage</strong>
+            <small>Developers</small>
         </div>
+
     </a>
 
+
     <nav class="nav-links">
+
+        <a href="#home">Home</a>
         <a href="#about">Legacy</a>
         <a href="#services">Services</a>
         <a href="#projects">Projects</a>
-        <a href="#philosophy">Philosophy</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
+
+        <a href="#contact" class="nav-cta">
+            Enquire Now
+        </a>
+
     </nav>
 
-    <a href="#contact" class="nav-cta magnetic">START A PROJECT</a>
 
-    <div class="menu">☰</div>
+    <div class="menu-toggle">
+        ☰
+    </div>
+
 </header>
 
 
-<!-- HERO -->
+<!-- =========================================================
+     HERO
+========================================================= -->
+
 <section class="hero" id="home">
 
-    <div class="hero-bg"></div>
+    <div class="hero-image"></div>
+
     <div class="hero-overlay"></div>
-    <div class="hero-vignette"></div>
 
-    <div class="hero-content">
 
-        <div class="eyebrow reveal">
-            Heritage • Royalty • Craftsmanship
+    <div class="hero-content reveal">
+
+        <div class="eyebrow">
+            Heritage Construction · Restoration · Luxury Living
         </div>
 
-        <h1 class="reveal">
-            Where
-            <span>Royalty</span>
+
+        <h1>
+            Where <span>Royalty</span><br>
             Becomes Legacy.
         </h1>
 
-        <p class="hero-sub reveal">
+
+        <p class="hero-sub">
             Crafting royal spaces inspired by timeless Indian heritage,
             refined craftsmanship and a vision built to endure generations.
         </p>
 
-        <div class="hero-buttons reveal">
 
-            <a href="#projects" class="btn primary magnetic">
+        <div class="hero-buttons">
+
+            <a href="#projects" class="btn btn-primary magnetic">
                 Explore Our Legacy
             </a>
 
-            <a href="#contact" class="btn secondary magnetic">
-                Discuss Your Vision
+            <a href="#contact" class="btn btn-secondary magnetic">
+                Begin Your Vision
             </a>
 
         </div>
 
     </div>
 
+
     <div class="hero-bottom">
 
-        <div class="scroll">
-            SCROLL TO DISCOVER
+        <div>
+            <div class="scroll-text">Scroll to discover</div>
+            <div class="scroll-line"></div>
         </div>
 
-        <div class="hero-location">
-            <strong>Rathore Heritage</strong>
-            ROYAL SPACES • TIMELESS CRAFT
+        <div class="scroll-text">
+            Rajasthan · India
         </div>
 
     </div>
@@ -1499,43 +1609,62 @@ footer{
 </section>
 
 
-<!-- ABOUT -->
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
 <section class="section about" id="about">
 
     <div class="about-grid">
 
-        <div class="about-image reveal-left">
+        <div class="about-image reveal left">
 
-            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=90">
+            <img
+                src="https://www.indiaclassicjourneys.com/wp-content/uploads/2023/12/Raas-Haveli-Jodhpur-Rajasthan.jpg"
+                alt="Rajasthan Royal Haveli Interior"
+            >
 
-            <div class="about-number">01</div>
+            <div class="image-frame"></div>
+
+            <div class="image-caption">
+                <span>Built with Heritage</span>
+                <small>Inspired by Rajasthan's timeless architecture</small>
+            </div>
 
         </div>
 
-        <div class="about-copy reveal-right">
 
-            <div class="kicker">Our Legacy</div>
+        <div class="about-copy reveal right">
+
+            <div class="section-label">
+                Our Legacy
+            </div>
 
             <h2 class="section-title">
-                Built With
-                <em>Royal Character.</em>
+                Architecture that
+                <span>remembers.</span>
             </h2>
 
             <p>
-                Rathore Heritage Developers brings together the grandeur
-                of Indian heritage architecture with contemporary
-                construction and development standards.
+                Rathore Heritage Developers creates spaces where
+                architecture becomes more than construction —
+                it becomes identity, emotion and legacy.
             </p>
 
             <p>
-                From magnificent residences to heritage restoration,
-                every space is imagined with one principle —
-                it should possess character today and become a legacy tomorrow.
+                From grand heritage residences to restoration of
+                timeless architectural elements, every project is
+                approached with respect for craftsmanship,
+                proportion and the spirit of Indian royalty.
             </p>
 
-            <div class="heritage-sign">
-                <div class="sign-line"></div>
-                <div class="sign-text">A Legacy Worth Building</div>
+            <p>
+                Our vision is simple — create spaces that feel
+                magnificent today and remain meaningful for generations.
+            </p>
+
+            <div class="about-signature">
+                Royal spaces. Timeless legacy.
             </div>
 
         </div>
@@ -1545,23 +1674,28 @@ footer{
 </section>
 
 
-<!-- STATEMENT -->
+<!-- =========================================================
+     ROYAL STATEMENT
+========================================================= -->
+
 <section class="statement">
 
-    <div class="statement-inner reveal">
+    <div class="statement-bg"></div>
+    <div class="statement-overlay"></div>
 
-        <div class="kicker">The Rathore Vision</div>
+    <div class="statement-content reveal">
+
+        <div class="ornament">✦</div>
 
         <h2>
-            Architecture is not merely
-            <em>built.</em><br>
-            It is inherited.
+            Inspired by
+            <span>Royal Rajasthan.</span>
         </h2>
 
         <p>
-            We create spaces that carry the soul of heritage,
-            the confidence of royalty and the strength to stand
-            through generations.
+            Jharokhas, carved sandstone, grand courtyards,
+            ornate arches and timeless craftsmanship —
+            translated into spaces designed for modern generations.
         </p>
 
     </div>
@@ -1569,21 +1703,26 @@ footer{
 </section>
 
 
-<!-- SERVICES -->
+<!-- =========================================================
+     SERVICES
+========================================================= -->
+
 <section class="section services" id="services">
 
     <div class="section-head reveal">
 
-        <div class="kicker">Our Expertise</div>
+        <div class="section-label">
+            What We Create
+        </div>
 
         <h2 class="section-title">
-            The Art of
-            <em>Royal Development.</em>
+            Crafted for a
+            <span>royal life.</span>
         </h2>
 
         <p class="section-description">
-            Bespoke development and architectural services crafted
-            for clients who appreciate timeless design and exceptional detail.
+            Every service combines traditional Indian architectural
+            character with modern planning, execution and luxury.
         </p>
 
     </div>
@@ -1591,66 +1730,83 @@ footer{
 
     <div class="services-grid">
 
-        <div class="service reveal">
 
-            <div class="service-no">01</div>
+        <div class="service-card reveal">
 
-            <div class="service-icon">♜</div>
+            <div class="service-content">
 
-            <h3>Heritage Construction</h3>
+                <div class="service-number">01</div>
 
-            <p>
-                Creating structures inspired by India's architectural
-                heritage with modern engineering excellence.
-            </p>
+                <div class="service-icon">♜</div>
 
-        </div>
+                <h3>Heritage Construction</h3>
 
+                <p>
+                    Bespoke residences and spaces inspired by
+                    royal Rajasthani architecture.
+                </p>
 
-        <div class="service reveal">
-
-            <div class="service-no">02</div>
-
-            <div class="service-icon">♜</div>
-
-            <h3>Restoration & Revival</h3>
-
-            <p>
-                Preserving historic character while restoring properties
-                for a new generation.
-            </p>
+            </div>
 
         </div>
 
 
-        <div class="service reveal">
+        <div class="service-card reveal">
 
-            <div class="service-no">03</div>
+            <div class="service-content">
 
-            <div class="service-icon">♜</div>
+                <div class="service-number">02</div>
 
-            <h3>Luxury Living</h3>
+                <div class="service-icon">⌂</div>
 
-            <p>
-                Bespoke residences and spaces designed around refined
-                living, elegance and individuality.
-            </p>
+                <h3>Restoration</h3>
+
+                <p>
+                    Preserving architectural character while
+                    bringing heritage properties back to life.
+                </p>
+
+            </div>
 
         </div>
 
 
-        <div class="service reveal">
+        <div class="service-card reveal">
 
-            <div class="service-no">04</div>
+            <div class="service-content">
 
-            <div class="service-icon">♜</div>
+                <div class="service-number">03</div>
 
-            <h3>Architectural Consultancy</h3>
+                <div class="service-icon">✦</div>
 
-            <p>
-                Strategic architectural and development guidance
-                from concept to execution.
-            </p>
+                <h3>Luxury Living</h3>
+
+                <p>
+                    Elegant spaces designed around comfort,
+                    exclusivity and timeless aesthetics.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="service-card reveal">
+
+            <div class="service-content">
+
+                <div class="service-number">04</div>
+
+                <div class="service-icon">❖</div>
+
+                <h3>Consultancy</h3>
+
+                <p>
+                    Architectural and development guidance
+                    for distinctive heritage-inspired projects.
+                </p>
+
+            </div>
 
         </div>
 
@@ -1659,21 +1815,26 @@ footer{
 </section>
 
 
-<!-- PROJECTS -->
-<section class="section projects" id="projects">
+<!-- =========================================================
+     SIGNATURE PROJECTS
+========================================================= -->
+
+<section class="section" id="projects">
 
     <div class="section-head reveal">
 
-        <div class="kicker">Signature Works</div>
+        <div class="section-label">
+            Signature Projects
+        </div>
 
         <h2 class="section-title">
-            Spaces With
-            <em>Presence.</em>
+            Spaces with a
+            <span>royal soul.</span>
         </h2>
 
         <p class="section-description">
-            A curated showcase of architectural possibilities where
-            heritage, craftsmanship and contemporary luxury meet.
+            A visual expression of the architectural language
+            that inspires Rathore Heritage Developers.
         </p>
 
     </div>
@@ -1681,52 +1842,55 @@ footer{
 
     <div class="projects-grid">
 
-        <div class="project reveal-left">
 
-            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1500&q=90">
+        <div class="project reveal">
 
-            <div class="project-overlay">
+            <img
+                src="https://jaisalmertourism.co.in/images/places-to-visit/headers/jaisalmer-fort-palace-museum-and-heritage-centre-header-jaisalmer-tourism.jpg.jpg"
+                alt="Jaisalmer Royal Heritage Architecture"
+            >
 
-                <div class="project-info">
-                    <small>ROYAL RESIDENCE</small>
-                    <h3>The Heritage House</h3>
-                </div>
+            <div class="project-info">
+
+                <small>Royal Heritage</small>
+
+                <h3>The Golden Haveli</h3>
 
             </div>
 
         </div>
 
 
-        <div class="project-column">
+        <div class="project reveal">
 
-            <div class="project small reveal-right">
+            <img
+                src="https://st.depositphotos.com/1049747/58360/i/450/depositphotos_583603658-stock-photo-mehrangarh-fort-built-1459-capital.jpg"
+                alt="Rajasthan Jharokha Architecture"
+            >
 
-                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=90">
+            <div class="project-info">
 
-                <div class="project-overlay">
+                <small>Rajput Architecture</small>
 
-                    <div class="project-info">
-                        <small>LUXURY LIVING</small>
-                        <h3>The Courtyard</h3>
-                    </div>
-
-                </div>
+                <h3>The Jharokha</h3>
 
             </div>
 
+        </div>
 
-            <div class="project small reveal-right">
 
-                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=90">
+        <div class="project reveal">
 
-                <div class="project-overlay">
+            <img
+                src="https://www.indiaviajes.com/images/packages/gira-en-ocio.jpg"
+                alt="Rajasthan Royal Palace Courtyard"
+            >
 
-                    <div class="project-info">
-                        <small>HERITAGE ARCHITECTURE</small>
-                        <h3>The Royal Estate</h3>
-                    </div>
+            <div class="project-info">
 
-                </div>
+                <small>Royal Courtyard</small>
+
+                <h3>The Palace Court</h3>
 
             </div>
 
@@ -1737,63 +1901,117 @@ footer{
 </section>
 
 
-<!-- PHILOSOPHY -->
-<section class="section philosophy" id="philosophy">
+<!-- =========================================================
+     PHILOSOPHY
+========================================================= -->
+
+<section class="section philosophy">
 
     <div class="philosophy-grid">
 
-        <div class="philosophy-visual reveal-left"></div>
 
-        <div class="philosophy-copy reveal-right">
+        <div class="philosophy-image reveal left">
 
-            <div class="kicker">Our Philosophy</div>
+            <img
+                src="https://www.eternalmewar.in/media/newsletter/templates/2023/nl235/EMNLimages/page4/2.jpg"
+                alt="Royal Heritage Interior Rajasthan"
+            >
 
-            <h2>
-                Heritage in the
-                <span>details.</span>
+        </div>
+
+
+        <div class="reveal right">
+
+            <div class="section-label">
+                Our Philosophy
+            </div>
+
+            <h2 class="section-title">
+                The art of
+                <span>timeless detail.</span>
             </h2>
 
-            <div class="principles">
+            <p class="section-description">
+                Royal architecture is never about excess alone.
+                It is about proportion, craftsmanship, material,
+                light and the feeling a space creates.
+            </p>
 
-                <div class="principle">
-                    <b>01</b>
+
+            <div class="philosophy-list">
+
+
+                <div class="philosophy-item">
+
+                    <span>01</span>
+
                     <div>
-                        <h4>Timeless Design</h4>
+
+                        <h4>Authentic Character</h4>
+
                         <p>
-                            Design that remains relevant beyond changing trends.
+                            Architectural elements rooted in
+                            India's heritage traditions.
                         </p>
+
                     </div>
+
                 </div>
 
-                <div class="principle">
-                    <b>02</b>
+
+                <div class="philosophy-item">
+
+                    <span>02</span>
+
                     <div>
-                        <h4>Royal Character</h4>
+
+                        <h4>Masterful Craftsmanship</h4>
+
                         <p>
-                            Spaces with identity, grandeur and unmistakable presence.
+                            Attention to carved stone, arches,
+                            jali, jharokhas and refined detailing.
                         </p>
+
                     </div>
+
                 </div>
 
-                <div class="principle">
-                    <b>03</b>
+
+                <div class="philosophy-item">
+
+                    <span>03</span>
+
                     <div>
-                        <h4>Craftsmanship</h4>
+
+                        <h4>Modern Comfort</h4>
+
                         <p>
-                            Attention to proportion, material, detail and finish.
+                            Heritage aesthetics combined with
+                            contemporary functionality.
                         </p>
+
                     </div>
+
                 </div>
 
-                <div class="principle">
-                    <b>04</b>
+
+                <div class="philosophy-item">
+
+                    <span>04</span>
+
                     <div>
-                        <h4>Built To Endure</h4>
+
+                        <h4>Generational Vision</h4>
+
                         <p>
-                            Quality and engineering designed with generations in mind.
+                            Creating architecture designed to
+                            outlive trends and generations.
                         </p>
+
                     </div>
+
                 </div>
+
 
             </div>
 
@@ -1804,70 +2022,115 @@ footer{
 </section>
 
 
-<!-- STATS -->
+<!-- =========================================================
+     STATS
+========================================================= -->
+
 <section class="stats">
 
     <div class="stat reveal">
-        <div class="stat-number">01</div>
-        <div class="stat-label">Royal Vision</div>
+        <strong>01</strong>
+        <span>Royal Vision</span>
     </div>
 
     <div class="stat reveal">
-        <div class="stat-number">∞</div>
-        <div class="stat-label">Timeless Legacy</div>
+        <strong>∞</strong>
+        <span>Timeless Legacy</span>
     </div>
 
     <div class="stat reveal">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Craftsmanship</div>
+        <strong>04</strong>
+        <span>Core Services</span>
     </div>
 
     <div class="stat reveal">
-        <div class="stat-number">01</div>
-        <div class="stat-label">Signature Standard</div>
+        <strong>1</strong>
+        <span>Signature Standard</span>
     </div>
 
 </section>
 
 
-<!-- GALLERY -->
+<!-- =========================================================
+     GALLERY
+========================================================= -->
+
 <section class="section gallery" id="gallery">
 
     <div class="section-head reveal">
 
-        <div class="kicker">Visual Heritage</div>
+        <div class="section-label">
+            Heritage Gallery
+        </div>
 
         <h2 class="section-title">
-            A Glimpse Into
-            <em>Royal Living.</em>
+            Details that define
+            <span>royalty.</span>
         </h2>
 
     </div>
 
+
     <div class="gallery-grid">
 
-        <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=90">
-        </div>
 
         <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=90">
+
+            <img
+                src="https://st.depositphotos.com/1049747/58360/i/450/depositphotos_583603658-stock-photo-mehrangarh-fort-built-1459-capital.jpg"
+                alt="Jharokha"
+            >
+
         </div>
 
-        <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1000&q=90">
-        </div>
 
         <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=90">
+
+            <img
+                src="https://jaisalmertourism.co.in/images/places-to-visit/headers/jaisalmer-fort-palace-museum-and-heritage-centre-header-jaisalmer-tourism.jpg.jpg"
+                alt="Golden Haveli Courtyard"
+            >
+
         </div>
 
-        <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=90">
-        </div>
 
         <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=90">
+
+            <img
+                src="https://www.indiaclassicjourneys.com/wp-content/uploads/2023/12/Raas-Haveli-Jodhpur-Rajasthan.jpg"
+                alt="Raas Haveli Interior"
+            >
+
+        </div>
+
+
+        <div class="gallery-item reveal">
+
+            <img
+                src="https://www.eternalmewar.in/media/newsletter/templates/2023/nl235/EMNLimages/page4/2.jpg"
+                alt="Mewar Royal Interior"
+            >
+
+        </div>
+
+
+        <div class="gallery-item reveal">
+
+            <img
+                src="https://i2.pickpik.com/photos/316/380/911/architecture-chomu-palace-rajasthan-india-a3dcfca02d32fd37584e6f201cf0310b.jpg"
+                alt="Chomu Palace Courtyard"
+            >
+
+        </div>
+
+
+        <div class="gallery-item reveal">
+
+            <img
+                src="https://www.indiaviajes.com/images/packages/gira-en-ocio.jpg"
+                alt="Rajasthan Palace"
+            >
+
         </div>
 
     </div>
@@ -1875,16 +2138,21 @@ footer{
 </section>
 
 
-<!-- PROCESS -->
+<!-- =========================================================
+     PROCESS
+========================================================= -->
+
 <section class="section process">
 
     <div class="section-head reveal">
 
-        <div class="kicker">Our Process</div>
+        <div class="section-label">
+            Our Process
+        </div>
 
         <h2 class="section-title">
-            From Vision To
-            <em>Legacy.</em>
+            From vision to
+            <span>legacy.</span>
         </h2>
 
     </div>
@@ -1892,34 +2160,60 @@ footer{
 
     <div class="process-grid">
 
+
         <div class="process-item reveal">
+
             <div class="process-number">01</div>
-            <h3>Consultation</h3>
-            <p>Understanding your vision, requirements and aspirations.</p>
+
+            <h3>Discover</h3>
+
+            <p>
+                Understanding your vision, lifestyle,
+                site and architectural aspirations.
+            </p>
+
         </div>
 
+
         <div class="process-item reveal">
+
             <div class="process-number">02</div>
-            <h3>Concept</h3>
-            <p>Developing the architectural direction and design language.</p>
+
+            <h3>Design</h3>
+
+            <p>
+                Developing a distinctive design language
+                inspired by heritage and refined living.
+            </p>
+
         </div>
 
+
         <div class="process-item reveal">
+
             <div class="process-number">03</div>
-            <h3>Planning</h3>
-            <p>Turning the vision into detailed project planning.</p>
+
+            <h3>Craft</h3>
+
+            <p>
+                Bringing the design to life through
+                disciplined execution and craftsmanship.
+            </p>
+
         </div>
 
+
         <div class="process-item reveal">
+
             <div class="process-number">04</div>
-            <h3>Execution</h3>
-            <p>Bringing every detail to life with precision.</p>
-        </div>
 
-        <div class="process-item reveal">
-            <div class="process-number">05</div>
             <h3>Legacy</h3>
-            <p>Delivering a space designed to endure for generations.</p>
+
+            <p>
+                Delivering spaces designed to remain
+                beautiful and meaningful for generations.
+            </p>
+
         </div>
 
     </div>
@@ -1927,153 +2221,195 @@ footer{
 </section>
 
 
-<!-- TESTIMONIAL -->
+<!-- =========================================================
+     TESTIMONIAL
+========================================================= -->
+
 <section class="testimonial">
 
-    <div class="reveal">
+    <div class="quote-mark">“</div>
 
-        <div class="quote-mark">“</div>
+    <div class="quote reveal">
+        A truly remarkable space is not simply built.
+        It is remembered.
+    </div>
 
-        <div class="quote">
-            A royal space is not defined by its size,
-            but by the legacy it leaves behind.
-        </div>
-
-        <div class="testimonial-name">
-            — RATHORE HERITAGE DEVELOPERS
-        </div>
-
+    <div class="quote-author">
+        Rathore Heritage Developers
     </div>
 
 </section>
 
 
-<!-- CONTACT -->
+<!-- =========================================================
+     CONTACT / ENQUIRY
+========================================================= -->
+
 <section class="section contact" id="contact">
 
     <div class="contact-grid">
 
-        <div class="contact-copy reveal-left">
 
-            <div class="kicker">Begin Your Legacy</div>
+        <div class="reveal left">
 
-            <h2>
-                Have a Vision
-                <span>Worth Building?</span>
+            <div class="section-label">
+                Begin Your Journey
+            </div>
+
+            <h2 class="section-title">
+                Let's create something
+                <span>worthy of legacy.</span>
             </h2>
 
-            <p>
-                Tell us about your project and let us explore
-                how we can transform your vision into a timeless
-                architectural experience.
+            <p class="section-description">
+                Tell us about your project, restoration vision,
+                luxury residence or heritage development.
+                Our team will connect with you personally.
             </p>
 
 
             <div class="contact-details">
 
-                <div class="contact-detail">
 
-                    <div class="contact-detail-icon">✦</div>
+                <div class="contact-row">
+
+                    <div class="icon">☎</div>
 
                     <div>
-                        <small>Call / WhatsApp</small>
+
+                        <span>Call / WhatsApp</span>
+
                         <a href="tel:+919414228829">
                             +91 94142 28829
                         </a>
+
                     </div>
 
                 </div>
 
 
-                <div class="contact-detail">
+                <div class="contact-row">
 
-                    <div class="contact-detail-icon">✉</div>
+                    <div class="icon">✉</div>
 
                     <div>
-                        <small>Email</small>
+
+                        <span>Email</span>
+
                         <a href="mailto:rathoreheritagedevelopers@gmail.com">
                             rathoreheritagedevelopers@gmail.com
                         </a>
+
                     </div>
 
                 </div>
+
+
+                <div class="contact-row">
+
+                    <div class="icon">◎</div>
+
+                    <div>
+
+                        <span>Instagram</span>
+
+                        <a
+                            href="https://instagram.com/rh_heritagebuilds"
+                            target="_blank"
+                        >
+                            @rh_heritagebuilds
+                        </a>
+
+                    </div>
+
+                </div>
+
 
             </div>
 
         </div>
 
 
-        <!-- ENQUIRY FORM -->
-        <div class="enquiry reveal-right">
+        <div class="contact-form reveal right">
+
+            <div class="form-title">
+                Enquire With Us
+            </div>
+
 
             <form id="enquiryForm">
 
-                <div class="form-grid">
+                <div class="form-group">
 
-                    <div class="field">
-                        <label>Full Name *</label>
-                        <input type="text" id="name" required>
-                    </div>
+                    <label>Your Name</label>
 
-                    <div class="field">
-                        <label>Phone Number *</label>
-                        <input type="tel" id="phone" required>
-                    </div>
-
-                    <div class="field">
-                        <label>Email Address</label>
-                        <input type="email" id="email">
-                    </div>
-
-                    <div class="field">
-                        <label>Project Type *</label>
-
-                        <select id="projectType" required>
-                            <option value="">Select Project</option>
-                            <option>Heritage Construction</option>
-                            <option>Heritage Restoration</option>
-                            <option>Luxury Residence</option>
-                            <option>Architectural Consultancy</option>
-                            <option>Property Development</option>
-                            <option>Other</option>
-                        </select>
-
-                    </div>
-
-                    <div class="field">
-                        <label>Location</label>
-                        <input type="text" id="location">
-                    </div>
-
-                    <div class="field">
-                        <label>Budget Range</label>
-
-                        <select id="budget">
-                            <option value="">Select Budget</option>
-                            <option>Below ₹25 Lakhs</option>
-                            <option>₹25 Lakhs – ₹50 Lakhs</option>
-                            <option>₹50 Lakhs – ₹1 Crore</option>
-                            <option>₹1 Crore – ₹5 Crores</option>
-                            <option>₹5 Crores+</option>
-                        </select>
-
-                    </div>
-
-                    <div class="field full">
-
-                        <label>Tell Us About Your Project</label>
-
-                        <textarea
-                            id="message"
-                            placeholder="Describe your vision, requirements or project details..."
-                        ></textarea>
-
-                    </div>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
 
                 </div>
 
-                <button class="submit magnetic" type="submit">
-                    SEND PROJECT ENQUIRY
+
+                <div class="form-group">
+
+                    <label>Phone Number</label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter your phone"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Project Type</label>
+
+                    <input
+                        type="text"
+                        id="project"
+                        placeholder="Heritage / Luxury / Restoration / Consultancy"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Your Vision</label>
+
+                    <textarea
+                        id="message"
+                        placeholder="Tell us about your project..."
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn magnetic"
+                >
+                    Send Enquiry
                 </button>
 
             </form>
@@ -2085,25 +2421,37 @@ footer{
 </section>
 
 
-<!-- FINAL CTA -->
+<!-- =========================================================
+     FINAL CTA
+========================================================= -->
+
 <section class="final-cta">
 
-    <div class="reveal">
+    <div class="final-bg"></div>
+    <div class="final-overlay"></div>
 
-        <div class="kicker">Your Legacy Awaits</div>
+
+    <div class="final-content reveal">
+
+        <div class="section-label">
+            Your Legacy Begins Here
+        </div>
 
         <h2>
-            Build Something
-            <span>Timeless.</span>
+            Build a space
+            <span>worthy of your name.</span>
         </h2>
 
         <p>
-            Because some spaces are built for living.
-            Others are built for generations.
+            Because luxury fades. Trends change.
+            But a true legacy remains.
         </p>
 
-        <a href="#contact" class="btn primary magnetic">
-            Begin Your Legacy
+        <a
+            href="#contact"
+            class="btn btn-primary magnetic"
+        >
+            Start Your Project
         </a>
 
     </div>
@@ -2111,59 +2459,55 @@ footer{
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
 <footer>
 
     <div class="footer-top">
 
+
         <div class="footer-brand">
 
-            <h2>Rathore Heritage Developers</h2>
+            <h3>Rathore Heritage</h3>
 
             <p>
                 Crafting royal spaces with timeless strength,
-                inspired by India's architectural heritage and
-                built for generations to come.
+                heritage character and a vision built for generations.
             </p>
 
-            <div class="socials" style="margin-top:25px;">
 
-                <!-- INSTAGRAM -->
-                <a href="#" class="social" aria-label="Instagram">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="1.7">
-                        <rect x="3" y="3" width="18" height="18" rx="5"/>
-                        <circle cx="12" cy="12" r="4"/>
-                        <circle cx="17.5" cy="6.5" r="1"/>
-                    </svg>
+            <div class="socials">
+
+                <a
+                    href="https://instagram.com/rh_heritagebuilds"
+                    target="_blank"
+                    aria-label="Instagram"
+                >
+                    ◎
                 </a>
 
-                <!-- WHATSAPP -->
-                <a href="https://wa.me/919414228829"
-                   class="social"
-                   aria-label="WhatsApp">
-
-                    <svg width="17" height="17" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="1.7">
-
-                        <path d="M20 11.5a8 8 0 0 1-11.7 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/>
-                        <path d="M8.5 8.5c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.2.1.4-.1.6l-.5.6c.7 1.1 1.5 1.8 2.7 2.4l.5-.6c.2-.2.4-.3.7-.2l1.4.7c.3.1.4.3.3.6-.2.8-.9 1.4-1.7 1.5-1.1.1-3-.8-4.4-2.1-1.4-1.3-2.2-3-2.2-4.2 0-.3.1-.5.2-.7Z"/>
-                    </svg>
-
+                <a
+                    href="https://wa.me/919414228829"
+                    target="_blank"
+                    aria-label="WhatsApp"
+                >
+                    ◉
                 </a>
 
-                <!-- EMAIL -->
-                <a href="mailto:rathoreheritagedevelopers@gmail.com"
-                   class="social"
-                   aria-label="Email">
+                <a
+                    href="mailto:rathoreheritagedevelopers@gmail.com"
+                    aria-label="Email"
+                >
+                    ✉
+                </a>
 
-                    <svg width="17" height="17" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="1.7">
-
-                        <rect x="3" y="5" width="18" height="14" rx="2"/>
-                        <path d="m4 7 8 6 8-6"/>
-                    </svg>
-
+                <a
+                    href="tel:+919414228829"
+                    aria-label="Call"
+                >
+                    ☎
                 </a>
 
             </div>
@@ -2171,34 +2515,31 @@ footer{
         </div>
 
 
-        <div class="footer-col">
+        <div class="footer-column">
 
-            <h4>EXPLORE</h4>
+            <h4>Explore</h4>
 
-            <a href="#about">Our Legacy</a>
+            <a href="#home">Home</a>
+            <a href="#about">Legacy</a>
             <a href="#services">Services</a>
             <a href="#projects">Projects</a>
-            <a href="#philosophy">Philosophy</a>
             <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
 
         </div>
 
 
-        <div class="footer-col">
+        <div class="footer-column">
 
-            <h4>CONTACT</h4>
+            <h4>Services</h4>
 
-            <a href="tel:+919414228829">+91 94142 28829</a>
-
-            <a href="mailto:rathoreheritagedevelopers@gmail.com">
-                Email Us
-            </a>
-
-            <a href="#contact">
-                Start A Project
-            </a>
+            <a href="#services">Heritage Construction</a>
+            <a href="#services">Restoration</a>
+            <a href="#services">Luxury Living</a>
+            <a href="#services">Consultancy</a>
 
         </div>
+
 
     </div>
 
@@ -2218,63 +2559,69 @@ footer{
 </footer>
 
 
-<!-- FLOATING BUTTONS -->
+<!-- =========================================================
+     FLOATING BUTTONS
+========================================================= -->
 
-<div class="floating">
+<div class="floating-buttons">
 
-    <!-- CALL -->
-    <a href="tel:+919414228829"
-       class="float-btn call magnetic"
-       aria-label="Call">
-
-        <svg viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="2">
-
-            <path d="M6.6 2.8 4.8 4.6c-.8.8-.9 2-.3 3.1 2.7 5 5.8 8.1 10.8 10.8 1 .6 2.3.5 3.1-.3l1.8-1.8c.5-.5.5-1.3 0-1.8l-2.8-2.8c-.5-.5-1.2-.5-1.7-.1l-1.6 1.2c-1.7-.8-3.1-2.2-3.9-3.9l1.2-1.6c.4-.5.3-1.3-.1-1.7L8.4 2.8c-.5-.5-1.3-.5-1.8 0Z"/>
-        </svg>
-
+    <a
+        href="tel:+919414228829"
+        class="float-btn float-call magnetic"
+        aria-label="Call"
+    >
+        ☎
     </a>
 
-
-    <!-- WHATSAPP -->
-    <a href="https://wa.me/919414228829"
-       class="float-btn whatsapp magnetic"
-       aria-label="WhatsApp">
-
-        <svg viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="1.8">
-
-            <path d="M20 11.5a8 8 0 0 1-11.7 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/>
-            <path d="M8.5 8.5c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.2.1.4-.1.6l-.5.6c.7 1.1 1.5 1.8 2.7 2.4l.5-.6c.2-.2.4-.3.7-.2l1.4.7c.3.1.4.3.3.6-.2.8-.9 1.4-1.7 1.5-1.1.1-3-.8-4.4-2.1-1.4-1.3-2.2-3-2.2-4.2 0-.3.1-.5.2-.7Z"/>
-        </svg>
-
+    <a
+        href="https://wa.me/919414228829"
+        target="_blank"
+        class="float-btn float-wa magnetic"
+        aria-label="WhatsApp"
+    >
+        ◉
     </a>
 
 </div>
 
 
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
 <script>
 
-/* ================= LOADER ================= */
+/* =========================================================
+   PRELOADER
+========================================================= */
 
 window.addEventListener("load",()=>{
+
     setTimeout(()=>{
-        document.querySelector(".loader").classList.add("hide");
-    },900);
+
+        const loader=document.getElementById("preloader");
+
+        loader.style.opacity="0";
+        loader.style.pointerEvents="none";
+
+        setTimeout(()=>{
+            loader.remove();
+        },1000);
+
+    },700);
+
 });
 
 
-/* ================= NAVBAR ================= */
+/* =========================================================
+   NAVBAR SCROLL
+========================================================= */
 
-const navbar = document.querySelector(".navbar");
+const navbar=document.querySelector(".navbar");
 
 window.addEventListener("scroll",()=>{
 
-    if(window.scrollY > 50){
+    if(window.scrollY>50){
         navbar.classList.add("scrolled");
     }else{
         navbar.classList.remove("scrolled");
@@ -2283,209 +2630,301 @@ window.addEventListener("scroll",()=>{
 });
 
 
-/* ================= MOBILE MENU ================= */
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-const menu = document.querySelector(".menu");
-const nav = document.querySelector(".nav-links");
+const menuToggle=document.querySelector(".menu-toggle");
+const navLinks=document.querySelector(".nav-links");
 
-menu.addEventListener("click",()=>{
-    nav.classList.toggle("open");
+menuToggle.addEventListener("click",()=>{
+
+    navLinks.classList.toggle("active");
+
 });
 
 document.querySelectorAll(".nav-links a").forEach(link=>{
+
     link.addEventListener("click",()=>{
-        nav.classList.remove("open");
-    });
-});
 
-
-/* ================= SCROLL REVEAL ================= */
-
-const observer = new IntersectionObserver((entries)=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            entry.target.classList.add("active");
-
-            observer.unobserve(entry.target);
-
-        }
+        navLinks.classList.remove("active");
 
     });
 
-},{
-    threshold:.12
 });
 
-document.querySelectorAll(".reveal,.reveal-left,.reveal-right")
-.forEach(el=>observer.observe(el));
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements=document.querySelectorAll(".reveal");
+
+const revealObserver=new IntersectionObserver(
+    (entries)=>{
+
+        entries.forEach(entry=>{
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("active");
+
+                revealObserver.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.12
+    }
+);
+
+revealElements.forEach(el=>{
+
+    revealObserver.observe(el);
+
+});
 
 
-/* ================= CURSOR ================= */
+/* =========================================================
+   MAGNETIC BUTTONS
+========================================================= */
 
-const cursor = document.querySelector(".cursor");
-const ring = document.querySelector(".cursor-ring");
+const magneticElements=document.querySelectorAll(".magnetic");
 
-let mouseX = 0;
-let mouseY = 0;
+magneticElements.forEach(el=>{
+
+    el.addEventListener("mousemove",(e)=>{
+
+        const rect=el.getBoundingClientRect();
+
+        const x=e.clientX-rect.left-rect.width/2;
+        const y=e.clientY-rect.top-rect.height/2;
+
+        el.style.transform=
+            `translate(${x*.12}px,${y*.12}px)`;
+
+    });
+
+    el.addEventListener("mouseleave",()=>{
+
+        el.style.transform="translate(0,0)";
+
+    });
+
+});
+
+
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+const cursor=document.querySelector(".cursor");
+const cursorRing=document.querySelector(".cursor-ring");
 
 document.addEventListener("mousemove",(e)=>{
 
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    cursor.style.left=e.clientX+"px";
+    cursor.style.top=e.clientY+"px";
 
-    cursor.style.left = mouseX + "px";
-    cursor.style.top = mouseY + "px";
-
-    ring.style.left = mouseX + "px";
-    ring.style.top = mouseY + "px";
+    cursorRing.style.left=e.clientX+"px";
+    cursorRing.style.top=e.clientY+"px";
 
 });
 
 
-/* ================= MAGNETIC BUTTONS ================= */
+document.querySelectorAll("a,button,.service-card,.project,.gallery-item")
+.forEach(el=>{
 
-document.querySelectorAll(".magnetic").forEach(button=>{
+    el.addEventListener("mouseenter",()=>{
 
-    button.addEventListener("mousemove",(e)=>{
-
-        if(window.innerWidth < 800) return;
-
-        const rect = button.getBoundingClientRect();
-
-        const x = e.clientX - rect.left - rect.width/2;
-        const y = e.clientY - rect.top - rect.height/2;
-
-        button.style.transform =
-            `translate(${x*.18}px,${y*.18}px)`;
+        cursorRing.style.width="55px";
+        cursorRing.style.height="55px";
 
     });
 
-    button.addEventListener("mouseleave",()=>{
+    el.addEventListener("mouseleave",()=>{
 
-        button.style.transform =
-            "translate(0,0)";
+        cursorRing.style.width="35px";
+        cursorRing.style.height="35px";
 
     });
 
 });
 
 
-/* ================= PARALLAX HERO ================= */
+/* =========================================================
+   HERO PARALLAX
+========================================================= */
 
-const heroBg = document.querySelector(".hero-bg");
+const heroImage=document.querySelector(".hero-image");
 
 window.addEventListener("scroll",()=>{
 
-    const y = window.scrollY;
+    if(window.scrollY<window.innerHeight){
 
-    if(y < window.innerHeight){
-
-        heroBg.style.transform =
-            `scale(1.08) translateY(${y*.12}px)`;
+        heroImage.style.transform=
+            `scale(1.05) translateY(${window.scrollY*.08}px)`;
 
     }
 
 });
 
 
-/* ================= ENQUIRY FORM ================= */
+/* =========================================================
+   ENQUIRY FORM
+========================================================= */
 
 document.getElementById("enquiryForm")
 .addEventListener("submit",function(e){
 
     e.preventDefault();
 
-    const name =
+    const name=
         document.getElementById("name").value.trim();
 
-    const phone =
+    const phone=
         document.getElementById("phone").value.trim();
 
-    const email =
+    const email=
         document.getElementById("email").value.trim();
 
-    const project =
-        document.getElementById("projectType").value;
+    const project=
+        document.getElementById("project").value.trim();
 
-    const location =
-        document.getElementById("location").value.trim();
-
-    const budget =
-        document.getElementById("budget").value;
-
-    const message =
+    const message=
         document.getElementById("message").value.trim();
 
 
-    const text =
-`*NEW PROJECT ENQUIRY*
-━━━━━━━━━━━━━━━━
+    const whatsappText=
+`*New Enquiry - Rathore Heritage Developers*
 
-*Name:* ${name}
-*Phone:* ${phone}
-*Email:* ${email || "Not provided"}
+Name: ${name}
 
-*Project Type:* ${project}
-*Location:* ${location || "Not provided"}
-*Budget:* ${budget || "Not provided"}
+Phone: ${phone}
 
-*Project Details:*
-${message || "Not provided"}
+Email: ${email}
 
-━━━━━━━━━━━━━━━━
-Rathore Heritage Developers
-Website Enquiry`;
+Project Type: ${project}
+
+Message:
+${message}`;
 
 
-    const whatsappURL =
-        "https://wa.me/919414228829?text=" +
-        encodeURIComponent(text);
+    const whatsappURL=
+        "https://wa.me/919414228829?text="
+        +encodeURIComponent(whatsappText);
 
 
     window.open(whatsappURL,"_blank");
 
 
-    /*
-       EMAIL CLIENT
-       Opens the visitor's email application too.
-    */
+    const emailSubject=
+        encodeURIComponent(
+            "New Website Enquiry - Rathore Heritage Developers"
+        );
 
-    const subject =
-        "New Website Enquiry - Rathore Heritage Developers";
 
-    const body =
+    const emailBody=
+        encodeURIComponent(
 `Name: ${name}
+
 Phone: ${phone}
+
 Email: ${email}
+
 Project Type: ${project}
-Location: ${location}
-Budget: ${budget}
 
-Project Details:
-${message}`;
+Message:
+${message}`
+        );
 
 
-    setTimeout(()=>{
-
-        window.location.href =
-        "mailto:rathoreheritagedevelopers@gmail.com" +
-        "?subject=" +
-        encodeURIComponent(subject) +
-        "&body=" +
-        encodeURIComponent(body);
-
-    },700);
+    window.location.href=
+        `mailto:rathoreheritagedevelopers@gmail.com?subject=${emailSubject}&body=${emailBody}`;
 
 });
 
 
-/* ================= IMAGE LAZY LOAD ================= */
+/* =========================================================
+   SMOOTH IMAGE PARALLAX
+========================================================= */
 
-document.querySelectorAll("img").forEach(img=>{
-    img.loading = "lazy";
+const parallaxImages=
+document.querySelectorAll(".about-image img,.philosophy-image img");
+
+window.addEventListener("scroll",()=>{
+
+    parallaxImages.forEach(img=>{
+
+        const rect=img.getBoundingClientRect();
+
+        if(
+            rect.top < window.innerHeight &&
+            rect.bottom > 0
+        ){
+
+            const movement=
+                (window.innerHeight/2 - rect.top)*.025;
+
+            img.style.transform=
+                `scale(1.04) translateY(${movement}px)`;
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   STAGGER SERVICE CARDS
+========================================================= */
+
+const cards=document.querySelectorAll(".service-card");
+
+cards.forEach((card,index)=>{
+
+    card.style.transitionDelay=
+        `${index*100}ms`;
+
+});
+
+
+/* =========================================================
+   STAGGER PROCESS
+========================================================= */
+
+const processes=document.querySelectorAll(".process-item");
+
+processes.forEach((item,index)=>{
+
+    item.style.transitionDelay=
+        `${index*120}ms`;
+
+});
+
+
+/* =========================================================
+   GALLERY HOVER
+========================================================= */
+
+document.querySelectorAll(".gallery-item").forEach(item=>{
+
+    item.addEventListener("mouseenter",()=>{
+
+        item.style.zIndex="5";
+
+    });
+
+    item.addEventListener("mouseleave",()=>{
+
+        item.style.zIndex="1";
+
+    });
+
 });
 
 </script>

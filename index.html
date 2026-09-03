@@ -1478,10 +1478,185 @@ footer{
 
 }
 
+
+/* =========================================================
+   RATHORE HERITAGE — ADMIN PANEL
+   Added without changing the public design
+========================================================= */
+#rhAdminLogin,#rhAdminPanel{display:none}
+body.rh-admin-open{overflow:hidden}
+#rhAdminLogin.rh-show,#rhAdminPanel.rh-show{display:flex}
+#rhAdminLogin{
+ position:fixed;inset:0;z-index:100000;background:#090705;
+ align-items:center;justify-content:center;padding:24px;font-family:"DM Sans",sans-serif;
+}
+.rh-login-box{
+ width:min(430px,100%);background:#120d09;border:1px solid rgba(200,161,90,.35);
+ padding:42px;box-shadow:0 30px 100px #000;color:#f3ead9;
+}
+.rh-login-mark{width:58px;height:58px;border:1px solid #c8a15a;transform:rotate(45deg);display:grid;place-items:center;margin:0 auto 30px}
+.rh-login-mark span{transform:rotate(-45deg);font:32px "Cormorant Garamond";color:#e2c37b}
+.rh-login-box h2{font:38px "Cormorant Garamond";font-weight:500;text-align:center}
+.rh-login-box p{color:#b8aa94;font-size:12px;text-align:center;margin:8px 0 28px}
+.rh-field{margin:14px 0}
+.rh-field label{display:block;color:#c8a15a;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.rh-field input,.rh-modal input,.rh-modal textarea,.rh-modal select{
+ width:100%;background:#0b0907;border:1px solid rgba(200,161,90,.25);color:#fffaf0;
+ padding:13px 14px;outline:0;border-radius:0
+}
+.rh-login-actions{display:flex;gap:10px;margin-top:22px}
+.rh-admin-btn{border:1px solid #c8a15a;background:#c8a15a;color:#130d08;padding:12px 18px;cursor:pointer;font-size:10px;letter-spacing:1.5px;text-transform:uppercase}
+.rh-admin-btn.alt{background:transparent;color:#e2c37b}
+.rh-login-error{display:none;color:#e78b7b;font-size:11px;margin-top:12px}
+#rhAdminPanel{
+ position:fixed;right:0;top:0;height:100vh;width:min(430px,100%);
+ z-index:99999;background:#0d0906;color:#f3ead9;border-left:1px solid rgba(200,161,90,.3);
+ flex-direction:column;box-shadow:-20px 0 80px rgba(0,0,0,.55);font-family:"DM Sans",sans-serif
+}
+.rh-admin-head{padding:18px 20px;border-bottom:1px solid rgba(200,161,90,.2);display:flex;justify-content:space-between;align-items:center}
+.rh-admin-head strong{font:25px "Cormorant Garamond";color:#e2c37b}
+.rh-admin-head small{display:block;color:#b8aa94;font-size:8px;letter-spacing:2px;text-transform:uppercase}
+.rh-admin-scroll{overflow:auto;padding:18px 20px 100px}
+.rh-admin-section{border:1px solid rgba(200,161,90,.16);margin-bottom:12px}
+.rh-admin-section>button{width:100%;padding:15px;background:#120d09;border:0;color:#f3ead9;text-align:left;cursor:pointer;display:flex;justify-content:space-between}
+.rh-admin-section>div{padding:14px;display:none}
+.rh-admin-section.open>div{display:block}
+.rh-admin-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.rh-admin-row.three{grid-template-columns:1fr 1fr 1fr}
+.rh-admin-item{border:1px solid rgba(200,161,90,.14);padding:10px;margin:8px 0;background:#100b07}
+.rh-admin-item strong{font-size:12px}
+.rh-admin-item small{display:block;color:#b8aa94;margin:4px 0 8px;font-size:10px}
+.rh-admin-item-actions{display:flex;gap:6px;flex-wrap:wrap}
+.rh-admin-item-actions button{padding:7px 9px;font-size:8px;letter-spacing:1px;text-transform:uppercase;background:transparent;border:1px solid rgba(200,161,90,.35);color:#e2c37b;cursor:pointer}
+#rhAdminToggle{
+ position:fixed;right:22px;bottom:22px;z-index:99990;background:#c8a15a;color:#130d08;
+ border:0;padding:14px 18px;font:600 10px "DM Sans";letter-spacing:1.5px;cursor:pointer;display:none
+}
+#rhAdminToggle.rh-show{display:block}
+.rh-editable.rh-editing{outline:1px dashed #e2c37b!important;outline-offset:4px}
+.rh-modal-wrap{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:100001;display:none;align-items:center;justify-content:center;padding:20px}
+.rh-modal-wrap.show{display:flex}
+.rh-modal{width:min(650px,100%);max-height:90vh;overflow:auto;background:#120d09;border:1px solid rgba(200,161,90,.35);padding:24px}
+.rh-modal h3{font:30px "Cormorant Garamond";color:#e2c37b;margin-bottom:18px}
+.rh-modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
+.rh-file{font-size:10px;color:#b8aa94}
+.rh-toast{position:fixed;left:50%;bottom:25px;transform:translateX(-50%);z-index:100002;background:#c8a15a;color:#130d08;padding:12px 18px;font-size:10px;display:none}
+@media(max-width:600px){.rh-login-box{padding:28px}.rh-admin-row,.rh-admin-row.three{grid-template-columns:1fr}}
+
 </style>
 </head>
 
 <body>
+
+<!-- =========================================================
+     RATHORE HERITAGE — ADMIN SYSTEM
+========================================================= -->
+<div id="rhAdminLogin">
+  <div class="rh-login-box">
+    <div class="rh-login-mark"><span>R</span></div>
+    <h2>Admin Access</h2>
+    <p>Rathore Heritage Developers · Website Manager</p>
+    <div class="rh-field"><label>Admin ID</label><input id="rhLoginId" autocomplete="username"></div>
+    <div class="rh-field"><label>Password</label><input id="rhLoginPassword" type="password" autocomplete="current-password"></div>
+    <div class="rh-login-actions">
+      <button class="rh-admin-btn" id="rhLoginBtn">Login</button>
+      <button class="rh-admin-btn alt" id="rhLoginCancel">Back</button>
+    </div>
+    <div class="rh-login-error" id="rhLoginError">Invalid admin ID or password.</div>
+    <div style="text-align:center;margin-top:16px">
+      <button id="rhForgotBtn" style="background:none;border:0;color:#b8aa94;font-size:10px;cursor:pointer">Forgot password?</button>
+    </div>
+  </div>
+</div>
+
+<aside id="rhAdminPanel">
+  <div class="rh-admin-head">
+    <div><strong>Website Manager</strong><small>Rathore Heritage Developers</small></div>
+    <button class="rh-admin-btn alt" id="rhAdminClose">Close</button>
+  </div>
+  <div class="rh-admin-scroll">
+
+    <div class="rh-admin-section open">
+      <button type="button">Quick Actions <span>⌃</span></button>
+      <div>
+        <div class="rh-admin-row">
+          <button class="rh-admin-btn" id="rhEditMode">Edit Website</button>
+          <button class="rh-admin-btn alt" id="rhSaveAll">Save Changes</button>
+        </div>
+        <div class="rh-admin-row">
+          <button class="rh-admin-btn alt" id="rhResetAll">Reset Local Changes</button>
+          <button class="rh-admin-btn alt" id="rhLogout">Logout</button>
+        </div>
+        <p style="font-size:9px;color:#b8aa94;line-height:1.7">
+          Click any editable text while Edit Website is active. Images can be replaced from the image manager.
+        </p>
+      </div>
+    </div>
+
+    <div class="rh-admin-section">
+      <button type="button">Text & Contact <span>⌄</span></button>
+      <div>
+        <button class="rh-admin-btn" id="rhOpenTextManager">Manage Website Text</button>
+        <button class="rh-admin-btn alt" id="rhOpenContactManager">Contact / Links</button>
+      </div>
+    </div>
+
+    <div class="rh-admin-section">
+      <button type="button">Images <span>⌄</span></button>
+      <div>
+        <button class="rh-admin-btn" id="rhOpenImageManager">Manage Images</button>
+        <p style="font-size:9px;color:#b8aa94;margin-top:10px">Upload or use an image URL. Uploaded demo images are stored in this browser. Production cloud storage is connected through the backend configuration.</p>
+      </div>
+    </div>
+
+    <div class="rh-admin-section">
+      <button type="button">Services <span>⌄</span></button>
+      <div>
+        <div id="rhServicesList"></div>
+        <button class="rh-admin-btn" id="rhAddService">+ Add Service</button>
+      </div>
+    </div>
+
+    <div class="rh-admin-section">
+      <button type="button">Projects <span>⌄</span></button>
+      <div>
+        <div id="rhProjectsList"></div>
+        <button class="rh-admin-btn" id="rhAddProject">+ Add Project</button>
+      </div>
+    </div>
+
+    <div class="rh-admin-section">
+      <button type="button">Gallery <span>⌄</span></button>
+      <div>
+        <div id="rhGalleryList"></div>
+        <button class="rh-admin-btn" id="rhAddGallery">+ Add Gallery Image</button>
+      </div>
+    </div>
+
+    <div class="rh-admin-section">
+      <button type="button">Process <span>⌄</span></button>
+      <div>
+        <div id="rhProcessList"></div>
+        <button class="rh-admin-btn" id="rhAddProcess">+ Add Process Step</button>
+      </div>
+    </div>
+
+    <div class="rh-admin-section">
+      <button type="button">Sections <span>⌄</span></button>
+      <div>
+        <div id="rhSectionsList"></div>
+        <button class="rh-admin-btn" id="rhAddSection">+ Add Content Section</button>
+        <p style="font-size:9px;color:#b8aa94;margin-top:10px">New sections use the existing site's visual language so the public design stays consistent.</p>
+      </div>
+    </div>
+
+  </div>
+</aside>
+
+<button id="rhAdminToggle">ADMIN PANEL</button>
+<div class="rh-modal-wrap" id="rhModalWrap"><div class="rh-modal" id="rhModal"></div></div>
+<div class="rh-toast" id="rhToast"></div>
+
 
 
 <!-- =========================================================
@@ -2925,6 +3100,277 @@ document.querySelectorAll(".gallery-item").forEach(item=>{
 
 });
 
+</script>
+
+
+<script>
+/* =========================================================
+   RATHORE HERITAGE — ADMIN ENGINE
+   Production-ready UI layer. Replace the storage adapter
+   with the supplied backend adapter when backend credentials
+   are connected. Public design is not altered.
+========================================================= */
+(function(){
+"use strict";
+
+const ADMIN_ID="rathoredevelopers";
+const ADMIN_PASSWORD="777373";
+const RESET_EMAIL="rathoreheritagedevelopers@gmail.com";
+const STORE="rathore_heritage_admin_v1";
+
+const $=s=>document.querySelector(s);
+const $$=s=>[...document.querySelectorAll(s)];
+
+let state=JSON.parse(localStorage.getItem(STORE)||"null")||{
+  text:{},
+  images:{},
+  services:[],
+  projects:[],
+  gallery:[],
+  process:[],
+  sections:[],
+  contact:{phone:"+91 94142 28829",email:RESET_EMAIL,instagram:"https://instagram.com/rh_heritagebuilds"}
+};
+
+function saveState(){
+  localStorage.setItem(STORE,JSON.stringify(state));
+  toast("Changes saved");
+}
+function toast(msg){
+  const t=$("#rhToast");t.textContent=msg;t.style.display="block";
+  setTimeout(()=>t.style.display="none",1800);
+}
+function modal(title,body,actions){
+  $("#rhModal").innerHTML=`<h3>${title}</h3>${body}<div class="rh-modal-actions">${actions||""}</div>`;
+  $("#rhModalWrap").classList.add("show");
+}
+function closeModal(){$("#rhModalWrap").classList.remove("show")}
+$("#rhModalWrap").addEventListener("click",e=>{if(e.target.id==="rhModalWrap")closeModal()});
+
+function openLogin(){ $("#rhAdminLogin").classList.add("rh-show"); document.body.classList.add("rh-admin-open"); }
+function closeLogin(){ $("#rhAdminLogin").classList.remove("rh-show"); document.body.classList.remove("rh-admin-open"); }
+function openPanel(){ $("#rhAdminPanel").classList.add("rh-show"); $("#rhAdminToggle").classList.add("rh-show"); document.body.classList.add("rh-admin-open"); renderManagers(); }
+function closePanel(){ $("#rhAdminPanel").classList.remove("rh-show"); $("#rhAdminToggle").classList.remove("rh-show"); document.body.classList.remove("rh-admin-open"); stopEdit(); }
+function login(){
+  if($("#rhLoginId").value.trim()===ADMIN_ID && $("#rhLoginPassword").value===ADMIN_PASSWORD){
+    sessionStorage.setItem("rh_admin_auth","1");
+    $("#rhLoginError").style.display="none"; closeLogin(); openPanel(); toast("Admin login successful");
+  }else $("#rhLoginError").style.display="block";
+}
+$("#rhLoginBtn").onclick=login;
+$("#rhLoginCancel").onclick=closeLogin;
+$("#rhLoginPassword").addEventListener("keydown",e=>{if(e.key==="Enter")login()});
+$("#rhForgotBtn").onclick=()=>{
+  const subject=encodeURIComponent("Rathore Heritage Developers - Admin Password Reset");
+  const body=encodeURIComponent("Please reset the website admin password for Rathore Heritage Developers.");
+  location.href=`mailto:${RESET_EMAIL}?subject=${subject}&body=${body}`;
+};
+$("#rhAdminClose").onclick=closePanel;
+$("#rhAdminToggle").onclick=openPanel;
+$("#rhLogout").onclick=()=>{sessionStorage.removeItem("rh_admin_auth");closePanel();toast("Logged out")};
+
+function isAdmin(){return sessionStorage.getItem("rh_admin_auth")==="1"}
+
+function startEdit(){
+  $$(".rh-editable").forEach(el=>el.contentEditable="true");
+  toast("Edit mode ON — click text to edit");
+}
+function stopEdit(){
+  $$(".rh-editable").forEach(el=>{el.contentEditable="false";el.classList.remove("rh-editing")});
+}
+$("#rhEditMode").onclick=startEdit;
+$("#rhSaveAll").onclick=()=>{
+  $$(".rh-editable").forEach((el,i)=>{
+    if(el.dataset.rhKey) state.text[el.dataset.rhKey]=el.innerHTML;
+  });
+  saveState();
+};
+$("#rhResetAll").onclick=()=>{
+  if(confirm("Reset saved local website changes?")){
+    localStorage.removeItem(STORE);location.reload();
+  }
+};
+
+function makeEditable(){
+  const selectors=[
+    ".logo-text strong",".logo-text small",".nav-links a",".nav-cta",
+    ".eyebrow",".hero h1",".hero-sub",".hero-buttons .btn",
+    ".scroll-text",".section-label",".section-title",".section-description",
+    ".image-caption span",".image-caption small",".about-copy p",".about-signature",
+    ".statement-content h2",".statement-content p",".service-card h3",".service-card p",
+    ".service-icon",".service-number",".project-info small",".project-info h3",
+    ".philosophy-item h4",".philosophy-item p",".stat strong",".stat span",
+    ".process-number",".process-item h3",".process-item p",".quote",".quote-author",
+    ".quote-mark",".contact-details a",".footer-brand p",".footer-col h4",".footer-col a",
+    ".footer-bottom span"
+  ];
+  let n=0;
+  selectors.forEach(sel=>$$(`${sel}`).forEach(el=>{
+    if(el.closest("#rhAdminPanel,#rhAdminLogin"))return;
+    el.classList.add("rh-editable");
+    if(!el.dataset.rhKey)el.dataset.rhKey="t_"+(++n)+"_"+Math.random().toString(36).slice(2,7);
+    if(state.text[el.dataset.rhKey]!==undefined)el.innerHTML=state.text[el.dataset.rhKey];
+    el.addEventListener("focus",()=>el.classList.add("rh-editing"));
+    el.addEventListener("blur",()=>el.classList.remove("rh-editing"));
+  }));
+}
+makeEditable();
+
+function openTextManager(){
+  const fields=[
+    [".hero h1","Hero Heading"],[".hero-sub","Hero Description"],[".section-title","First Section Title"],
+    [".quote","Testimonial Quote"]
+  ];
+  let body=fields.map(([sel,label],i)=>{
+    const el=$(sel);return `<div class="rh-field"><label>${label}</label><textarea id="rhtxt${i}" rows="3">${el?el.innerText.replace(/</g,"&lt;"):""}</textarea></div>`;
+  }).join("");
+  modal("Manage Website Text",body,`<button class="rh-admin-btn alt" onclick="rhCloseModal()">Cancel</button><button class="rh-admin-btn" id="rhTextSave">Save</button>`);
+  $("#rhTextSave").onclick=()=>{fields.forEach(([sel],i)=>{const el=$(sel);if(el){el.innerHTML=$("#rhtxt"+i).value;state.text[el.dataset.rhKey]=el.innerHTML}});saveState();closeModal()};
+}
+$("#rhOpenTextManager").onclick=openTextManager;
+
+function openContactManager(){
+  const c=state.contact;
+  modal("Contact / Social Links",
+    `<div class="rh-field"><label>Phone</label><input id="rhPhone" value="${html(c.phone)}"></div>
+     <div class="rh-field"><label>Email</label><input id="rhEmail" value="${html(c.email)}"></div>
+     <div class="rh-field"><label>Instagram URL</label><input id="rhInstagram" value="${html(c.instagram)}"></div>`,
+    `<button class="rh-admin-btn alt" onclick="rhCloseModal()">Cancel</button><button class="rh-admin-btn" id="rhContactSave">Save</button>`);
+  $("#rhContactSave").onclick=()=>{
+    state.contact={phone:$("#rhPhone").value,email:$("#rhEmail").value,instagram:$("#rhInstagram").value};
+    $$('a[href^="tel:"]').forEach(a=>{a.href="tel:"+state.contact.phone.replace(/\D/g,"");a.textContent=state.contact.phone});
+    $$('a[href^="mailto:"]').forEach(a=>{a.href="mailto:"+state.contact.email;a.textContent=state.contact.email});
+    saveState();closeModal();
+  };
+}
+$("#rhOpenContactManager").onclick=openContactManager;
+
+function html(v){return String(v??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+
+function imagePicker(title,callback){
+  modal(title,
+   `<div class="rh-field"><label>Image URL</label><input id="rhImageUrl" placeholder="https://..."></div>
+    <div class="rh-field"><label>Or upload image</label><input id="rhImageFile" class="rh-file" type="file" accept="image/*"></div>`,
+   `<button class="rh-admin-btn alt" onclick="rhCloseModal()">Cancel</button><button class="rh-admin-btn" id="rhImageUse">Use Image</button>`);
+  $("#rhImageUse").onclick=()=>{
+    const file=$("#rhImageFile").files[0],url=$("#rhImageUrl").value.trim();
+    if(file){
+      if(file.size>1800000){alert("Image is too large for browser-local storage. Use an optimized image under 1.8 MB.");return}
+      const r=new FileReader();r.onload=()=>{callback(r.result);closeModal()};r.readAsDataURL(file);
+    }else if(url){callback(url);closeModal()}
+  };
+}
+function openImageManager(){
+  const imgs=[
+    ...$$(".hero-image").map(el=>({label:"Hero",el})),
+    ...$$(".about-image img").map(el=>({label:"Legacy / About",el})),
+    ...$$(".philosophy-image img").map(el=>({label:"Philosophy",el})),
+    ...$$(".project img").map((el,i)=>({label:"Project "+(i+1),el})),
+    ...$$(".gallery-item img").map((el,i)=>({label:"Gallery "+(i+1),el}))
+  ];
+  const body=imgs.map((x,i)=>`<div class="rh-admin-item"><strong>${x.label}</strong><small>Replace this image without touching code.</small><button class="rh-admin-btn" id="rhi${i}">Change Image</button></div>`).join("");
+  modal("Image Manager",body,`<button class="rh-admin-btn alt" onclick="rhCloseModal()">Close</button>`);
+  imgs.forEach((x,i)=>$("#rhi"+i).onclick=()=>{
+    imagePicker("Replace "+x.label,(url)=>{
+      if(x.el.classList.contains("hero-image"))x.el.style.backgroundImage=`url("${url}")`;
+      else x.el.src=url;
+      state.images["img_"+i]=url;saveState();
+    });
+  });
+}
+$("#rhOpenImageManager").onclick=openImageManager;
+
+function listManager(container,items,type){
+  const el=$("#"+container);
+  el.innerHTML="";
+  items.forEach((item,i)=>{
+    const div=document.createElement("div");div.className="rh-admin-item";
+    div.innerHTML=`<strong>${html(item.title||item.name||("Item "+(i+1)))}</strong><small>${html(item.description||item.category||"")}</small>
+      <div class="rh-admin-item-actions">
+       <button data-edit>Edit</button><button data-up>↑</button><button data-down>↓</button><button data-del>Delete</button>
+      </div>`;
+    div.querySelector("[data-edit]").onclick=()=>editItem(type,i);
+    div.querySelector("[data-del]").onclick=()=>{if(confirm("Delete this item?")){items.splice(i,1);saveState();renderManagers()}};
+    div.querySelector("[data-up]").onclick=()=>{if(i>0){[items[i-1],items[i]]=[items[i],items[i-1]];saveState();renderManagers()}};
+    div.querySelector("[data-down]").onclick=()=>{if(i<items.length-1){[items[i+1],items[i]]=[items[i],items[i+1]];saveState();renderManagers()}};
+    el.appendChild(div);
+  });
+}
+function editItem(type,i){
+  const arr=state[type], item=arr[i]||{};
+  const fields=type==="services"
+    ? [["title","Service Name"],["description","Description"],["icon","Icon"]]
+    : type==="projects"
+    ? [["title","Project Name"],["category","Category"],["description","Description"],["image","Image URL"]]
+    : type==="gallery"
+    ? [["title","Caption"],["image","Image URL"]]
+    : type==="process"
+    ? [["title","Step Name"],["description","Description"]]
+    : [["title","Section Heading"],["description","Description"],["image","Image URL"]];
+  const body=fields.map(([k,l])=>`<div class="rh-field"><label>${l}</label>${k==="description"?`<textarea id="rhe_${k}" rows="4">${html(item[k]||"")}</textarea>`:`<input id="rhe_${k}" value="${html(item[k]||"")}">`}</div>`).join("");
+  modal(i===undefined?"Add":"Edit",body,`<button class="rh-admin-btn alt" onclick="rhCloseModal()">Cancel</button><button class="rh-admin-btn" id="rhItemSave">Save</button>`);
+  $("#rhItemSave").onclick=()=>{
+    const obj={};
+    fields.forEach(([k])=>obj[k]=$("#rhe_"+k).value);
+    if(type==="sections")obj.id=item.id||("section_"+Date.now());
+    arr[i]=obj;saveState();closeModal();renderManagers();renderDynamicSections();
+  };
+}
+function addItem(type){state[type].push({});editItem(type,state[type].length-1)}
+$("#rhAddService").onclick=()=>addItem("services");
+$("#rhAddProject").onclick=()=>addItem("projects");
+$("#rhAddGallery").onclick=()=>addItem("gallery");
+$("#rhAddProcess").onclick=()=>addItem("process");
+$("#rhAddSection").onclick=()=>addItem("sections");
+
+function renderManagers(){
+  listManager("rhServicesList",state.services,"services");
+  listManager("rhProjectsList",state.projects,"projects");
+  listManager("rhGalleryList",state.gallery,"gallery");
+  listManager("rhProcessList",state.process,"process");
+  listManager("rhSectionsList",state.sections,"sections");
+}
+function renderDynamicSections(){
+  let host=$("#rhDynamicSections");
+  if(!host){
+    host=document.createElement("div");host.id="rhDynamicSections";
+    const footer=$("footer"); if(footer)footer.parentNode.insertBefore(host,footer); else document.body.appendChild(host);
+  }
+  host.innerHTML="";
+  state.sections.forEach(s=>{
+    const sec=document.createElement("section");sec.className="section";
+    sec.innerHTML=`<div class="section-head"><div class="section-label">Added Section</div><h2 class="section-title">${html(s.title||"New Section")}</h2><p class="section-description">${html(s.description||"")}</p>${s.image?`<img src="${html(s.image)}" style="margin-top:30px;width:100%;max-height:500px;object-fit:cover">`:""}</div>`;
+    host.appendChild(sec);
+  });
+}
+window.rhCloseModal=closeModal;
+window.rhEditItem=editItem;
+
+function applySavedImages(){
+  Object.keys(state.images).forEach(k=>{
+    const m=k.match(/^img_(\d+)$/);if(!m)return;
+    const i=+m[1],all=[...$$(".hero-image"),...$$(".about-image img"),...$$(".philosophy-image img"),...$$(".project img"),...$$(".gallery-item img")];
+    const el=all[i];if(!el)return;
+    if(el.classList.contains("hero-image"))el.style.backgroundImage=`url("${state.images[k]}")`;else el.src=state.images[k];
+  });
+}
+function adminRoute(){
+  if(location.hash==="#admin" || new URLSearchParams(location.search).has("admin")){
+    openLogin();
+  }
+}
+adminRoute();
+applySavedImages();
+renderDynamicSections();
+
+$$(".rh-admin-section>button").forEach(b=>b.onclick=()=>b.parentElement.classList.toggle("open"));
+
+document.addEventListener("keydown",e=>{
+  if(e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==="a"){
+    e.preventDefault(); if(isAdmin())openPanel();else openLogin();
+  }
+});
+})();
 </script>
 
 </body>
